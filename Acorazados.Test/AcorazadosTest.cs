@@ -23,30 +23,57 @@ public class AcorazadosTest
 
         acorazados.ConsultarBarco(1, 1).Should().Be("g");
     }
+
+    [Fact]
+    public void Si_AgregoDestructorConLaCoordenada1_2EnPosicionVertical_Debe_ExistirDestructorEnLaCoordenada1_21_3Y1_4()
+    {
+        var acorazados = new Acorazados();
+        
+        acorazados.AgregarBarco("Destructor", 1, 2, "Vertical");
+        
+        acorazados.ConsultarBarco(1, 2).Should().Be("d");
+        acorazados.ConsultarBarco(1, 3).Should().Be("d");
+        acorazados.ConsultarBarco(1, 4).Should().Be("d");
+    }
     
     
     
 
     public class Acorazados
     {
-        public string[,] Tablero { get; set; }
+        private string[,] _tablero { get; set; }
 
         public Acorazados()
         {
-            Tablero = new string[10, 10];
+            _tablero = new string[10, 10];
         }
 
-        public int ObtenerNumeroFilasTablero() => Tablero.GetLength(0);
+        public int ObtenerNumeroFilasTablero() => _tablero.GetLength(0);
 
-        public int ObtenerNumeroColumnasTablero() => Tablero.GetLength(1);
+        public int ObtenerNumeroColumnasTablero() => _tablero.GetLength(1);
 
-        public void AgregarBarco(string barco, int x, int y)
+        public void AgregarBarco(string barco, int x, int y, string posicion = "Horizontal")
         {
+            var indicativoBarco = string.Empty;
+
+            if (barco == "Cañonero")
+                indicativoBarco = "g";
+            
+            if (barco == "Destructor")
+                indicativoBarco = "d";
+            
+            _tablero[x, y] = indicativoBarco;
+
+            if (posicion == "Vertical")
+            {
+                if (indicativoBarco == "d")
+                {
+                    _tablero[x, y + 1] = indicativoBarco;
+                    _tablero[x, y + 2] = indicativoBarco;
+                }
+            }
         }
 
-        public string ConsultarBarco(int x, int y)
-        {
-            return "g";
-        }
+        public string ConsultarBarco(int x, int y) => _tablero[x, y];
     }
 }
