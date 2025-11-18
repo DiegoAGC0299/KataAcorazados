@@ -1,6 +1,6 @@
 ﻿namespace Acorazados.Test;
 
-public class UnitTest1
+public class AcorazadosTest
 {
     [Fact]
     public void Test1()
