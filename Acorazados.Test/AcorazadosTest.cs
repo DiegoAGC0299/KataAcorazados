@@ -48,6 +48,19 @@ public class AcorazadosTest
         acorazados.ConsultarBarco(3, 2).Should().Be("d");
     }
     
+    [Fact]
+    public void Si_AgregoPortavionesConLaCoordenada1_3EnPosicionHorizontal_Debe_ExistirPortavionesEnLaCoordenada1_32_3_3_3Y4_3()
+    {
+        var acorazados = new Acorazados();
+        
+        acorazados.AgregarBarco("Portaviones", 1, 3, "Horizontal");
+        
+        acorazados.ConsultarBarco(1, 3).Should().Be("c");
+        acorazados.ConsultarBarco(2, 3).Should().Be("c");
+        acorazados.ConsultarBarco(3, 3).Should().Be("c");
+        acorazados.ConsultarBarco(4, 3).Should().Be("c");
+    }
+    
     
     
     
