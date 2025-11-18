@@ -40,12 +40,11 @@ public class AcorazadosTest
 
         public void AgregarBarco(string barco, int x, int y)
         {
-            throw new NotImplementedException();
         }
 
-        public bool ExisteBarco(int i, int i1)
+        public bool ExisteBarco(int x, int y)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
