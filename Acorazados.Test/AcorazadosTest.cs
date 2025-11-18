@@ -21,12 +21,12 @@ public class AcorazadosTest
 
         public int ObtenerNumeroFilasTablero()
         {
-            throw new NotImplementedException();
+            return 10;
         }
 
-        public object NumeroColumnas()
+        public int NumeroColumnas()
         {
-            throw new NotImplementedException();
+            return 10;
         }
     }
 }
