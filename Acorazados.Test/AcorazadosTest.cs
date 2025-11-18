@@ -116,6 +116,13 @@ public class AcorazadosTest
                     _tablero[x, y + 1] = indicativoBarco;
                     _tablero[x, y + 2] = indicativoBarco;
                 }
+                
+                if (indicativoBarco == "c")
+                {
+                    _tablero[x, y + 1] = indicativoBarco;
+                    _tablero[x, y + 2] = indicativoBarco; 
+                    _tablero[x, y + 3] = indicativoBarco; 
+                }
             }
 
             if (posicion == "Horizontal")
