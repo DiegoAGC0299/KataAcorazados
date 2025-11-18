@@ -9,12 +9,24 @@ public class AcorazadosTest
     {
         var acorazados = new Acorazados();
 
-        acorazados.Tablero.Should().NotBeNull();
+        acorazados.ObtenerNumeroFilasTablero().Should().Be(10);
+        acorazados.NumeroColumnas().Should().Be(10);
+
     }
     
 
     public class Acorazados
     {
-        public object Tablero { get; set; }
+        public string[,] Tablero { get; set; }
+
+        public int ObtenerNumeroFilasTablero()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object NumeroColumnas()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
