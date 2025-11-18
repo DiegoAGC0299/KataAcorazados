@@ -1,12 +1,7 @@
-﻿- [] Si inicializo un tablero, debe estar sin barcos
-Puedo colocar un barco en el tablero
-
-Un cañonero debe ocupar una posición
-Un destructor debe ocupar tres posiciones
-Un portaviones debe ocupar cuatro posiciones
-
-Si disparo al tablero y le doy al agua, debe mostrar en mensaje 'Tiro fallido'
-Si disparo al tablero y le doy a un barco, debe mostrar en mensaje 'Tiro exitoso'
-
-
-Un barco no puede estar posicionado sobre otro barco
+﻿- [] Si inicio el juego de acorazados, debe existir un tablero de 10 x 10
+- [] Si agrego un cañonero con la coordenada 1,1, debe existir el cañonero en la coordenada 1,1.
+- [] Si agrego destructor con la coordenada 1,2 en la posición vertical, debe existir destructor en la coordenada 1,2 1,3 y 1,4
+- [] Si agrego portaviones con la coordenada 1,3 en la posición horizontal, debe existir portaviones en la coordenada 1,3 2,3 3,3 y 4,3
+- [] Si agrego dos cañoneros con la coordenada 1,1. el segundo debe arrojar excepción.
+- [] Si disparo al tablero y le doy al agua, debe asignar 'o' en la coordenada y mostrar en mensaje 'Tiro fallido'
+- [] Si disparo al tablero y le doy a un barco, debe asignar 'x' en la coordenada y mostrar en mensaje 'Tiro exitoso'

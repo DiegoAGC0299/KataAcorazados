@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "6qbn1MgPWMA=",
+  "dgSpecHash": "ATRVvoKtRfQ=",
   "success": true,
   "projectFilePath": "C:\\Sinco\\Cosmos\\KataAcorazados\\Acorazados.Test\\Acorazados.Test.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\diego.gonzalez\\.nuget\\packages\\awesomeassertions\\9.3.0\\awesomeassertions.9.3.0.nupkg.sha512",
     "C:\\Users\\diego.gonzalez\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
+    "C:\\Users\\diego.gonzalez\\.nuget\\packages\\fontawesome\\4.7.0\\fontawesome.4.7.0.nupkg.sha512",
     "C:\\Users\\diego.gonzalez\\.nuget\\packages\\microsoft.codecoverage\\17.12.0\\microsoft.codecoverage.17.12.0.nupkg.sha512",
     "C:\\Users\\diego.gonzalez\\.nuget\\packages\\microsoft.net.test.sdk\\17.12.0\\microsoft.net.test.sdk.17.12.0.nupkg.sha512",
     "C:\\Users\\diego.gonzalez\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.12.0\\microsoft.testplatform.objectmodel.17.12.0.nupkg.sha512",

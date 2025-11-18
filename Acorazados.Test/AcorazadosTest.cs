@@ -5,25 +5,16 @@ namespace Acorazados.Test;
 public class AcorazadosTest
 {
     [Fact]
-    public void Si_CreoUnTablero_Debe_EstarSinBarcos()
+    public void Si_InicializoElJuegoDeAcorazados_DebeExistirUnTableroDe10x10()
     {
         var acorazados = new Acorazados();
 
-        acorazados.CrearTablero();
-
-        acorazados.CantidadBarcos.Should().Be(0);
+        acorazados.Tablero.Should().NotBeNull();
     }
+    
 
     public class Acorazados
     {
-        
-        public object CantidadBarcos { get; set; }
-
-        public void CrearTablero()
-        {
-            throw new NotImplementedException();
-        }
-
-        
+        public object Tablero { get; set; }
     }
 }

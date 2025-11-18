@@ -2,11 +2,27 @@
   "version": 3,
   "targets": {
     "net9.0": {
+      "AwesomeAssertions/9.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AwesomeAssertions.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AwesomeAssertions.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "coverlet.collector/6.0.2": {
         "type": "package",
         "build": {
           "build/netstandard2.0/coverlet.collector.targets": {}
         }
+      },
+      "FontAwesome/4.7.0": {
+        "type": "package"
       },
       "Microsoft.CodeCoverage/17.12.0": {
         "type": "package",
@@ -415,6 +431,34 @@
     }
   },
   "libraries": {
+    "AwesomeAssertions/9.3.0": {
+      "sha512": "8lGLYap2ec2gNLgjf2xKZaKLpQ7j36oJvrYzBVVpNAumqnxRdevqqhEF66qxE92f8y2+zsbQ061DeHG61ZhzaQ==",
+      "type": "package",
+      "path": "awesomeassertions/9.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AwesomeAssertions.png",
+        "README.md",
+        "awesomeassertions.9.3.0.nupkg.sha512",
+        "awesomeassertions.nuspec",
+        "lib/net47/AwesomeAssertions.dll",
+        "lib/net47/AwesomeAssertions.pdb",
+        "lib/net47/AwesomeAssertions.xml",
+        "lib/net6.0/AwesomeAssertions.dll",
+        "lib/net6.0/AwesomeAssertions.pdb",
+        "lib/net6.0/AwesomeAssertions.xml",
+        "lib/net8.0/AwesomeAssertions.dll",
+        "lib/net8.0/AwesomeAssertions.pdb",
+        "lib/net8.0/AwesomeAssertions.xml",
+        "lib/netstandard2.0/AwesomeAssertions.dll",
+        "lib/netstandard2.0/AwesomeAssertions.pdb",
+        "lib/netstandard2.0/AwesomeAssertions.xml",
+        "lib/netstandard2.1/AwesomeAssertions.dll",
+        "lib/netstandard2.1/AwesomeAssertions.pdb",
+        "lib/netstandard2.1/AwesomeAssertions.xml"
+      ]
+    },
     "coverlet.collector/6.0.2": {
       "sha512": "bJShQ6uWRTQ100ZeyiMqcFlhP7WJ+bCuabUs885dJiBEzMsJMSFr7BOyeCw4rgvQokteGi5rKQTlkhfQPUXg2A==",
       "type": "package",
@@ -483,6 +527,27 @@
         "coverlet-icon.png",
         "coverlet.collector.6.0.2.nupkg.sha512",
         "coverlet.collector.nuspec"
+      ]
+    },
+    "FontAwesome/4.7.0": {
+      "sha512": "n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
+      "type": "package",
+      "path": "fontawesome/4.7.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/font-awesome.css",
+        "Content/Content/font-awesome.min.css",
+        "Content/fonts/FontAwesome.otf",
+        "Content/fonts/fontawesome-webfont.eot",
+        "Content/fonts/fontawesome-webfont.svg",
+        "Content/fonts/fontawesome-webfont.ttf",
+        "Content/fonts/fontawesome-webfont.woff",
+        "Content/fonts/fontawesome-webfont.woff2",
+        "fontawesome.4.7.0.nupkg.sha512",
+        "fontawesome.nuspec",
+        "tools/install.ps1"
       ]
     },
     "Microsoft.CodeCoverage/17.12.0": {
@@ -936,6 +1001,8 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "AwesomeAssertions >= 9.3.0",
+      "FontAwesome >= 4.7.0",
       "Microsoft.NET.Test.Sdk >= 17.12.0",
       "coverlet.collector >= 6.0.2",
       "xunit >= 2.9.2",
@@ -992,6 +1059,14 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "AwesomeAssertions": {
+            "target": "Package",
+            "version": "[9.3.0, )"
+          },
+          "FontAwesome": {
+            "target": "Package",
+            "version": "[4.7.0, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.12.0, )"

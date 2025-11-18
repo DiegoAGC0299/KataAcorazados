@@ -22,5 +22,6 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Pkgxunit_analyzers Condition=" '$(Pkgxunit_analyzers)' == '' ">C:\Users\diego.gonzalez\.nuget\packages\xunit.analyzers\1.16.0</Pkgxunit_analyzers>
+    <PkgFontAwesome Condition=" '$(PkgFontAwesome)' == '' ">C:\Users\diego.gonzalez\.nuget\packages\fontawesome\4.7.0</PkgFontAwesome>
   </PropertyGroup>
 </Project>
