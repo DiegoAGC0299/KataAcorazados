@@ -13,6 +13,16 @@ public class AcorazadosTest
         acorazados.ObtenerNumeroColumnasTablero().Should().Be(10);
 
     }
+
+    [Fact]
+    public void Si_AgregoUnCanoneroConLaCoordenada1_1_Debe_ExistirElCañonero_EnLaCoordenada1_1()
+    {
+        var acorazados = new Acorazados();
+
+        acorazados.AgregarBarco("Cañonero", 1, 1);
+
+        acorazados.ExisteBarco(1, 1).Should().BeTrue();
+    }
     
 
     public class Acorazados
@@ -27,5 +37,15 @@ public class AcorazadosTest
         public int ObtenerNumeroFilasTablero() => Tablero.GetLength(0);
 
         public int ObtenerNumeroColumnasTablero() => Tablero.GetLength(1);
+
+        public void AgregarBarco(string barco, int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ExisteBarco(int i, int i1)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
