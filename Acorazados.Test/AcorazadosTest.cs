@@ -86,6 +86,15 @@ public class AcorazadosTest
                     _tablero[x, y + 2] = indicativoBarco;
                 }
             }
+
+            if (posicion == "Horizontal")
+            {
+                if (indicativoBarco == "d")
+                {
+                    _tablero[x + 1, y] = indicativoBarco;
+                    _tablero[x + 2, y] = indicativoBarco; 
+                }
+            }
         }
 
         public string ConsultarBarco(int x, int y) => _tablero[x, y];
