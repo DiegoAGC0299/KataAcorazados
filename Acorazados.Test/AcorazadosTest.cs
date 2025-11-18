@@ -19,7 +19,7 @@ public class AcorazadosTest
     {
         var acorazados = new Acorazados();
 
-        acorazados.AgregarBarco("Cañonero", 1, 1);
+        acorazados.AgregarBarco(Barcos.Canonero, 1, 1);
 
         acorazados.ConsultarBarco(1, 1).Should().Be("g");
     }
@@ -29,7 +29,7 @@ public class AcorazadosTest
     {
         var acorazados = new Acorazados();
         
-        acorazados.AgregarBarco("Destructor", 1, 2, "Vertical");
+        acorazados.AgregarBarco(Barcos.Destructor, 1, 2, Orientacion.Vertical);
         
         acorazados.ConsultarBarco(1, 2).Should().Be("d");
         acorazados.ConsultarBarco(1, 3).Should().Be("d");
@@ -41,7 +41,7 @@ public class AcorazadosTest
     {
         var acorazados = new Acorazados();
         
-        acorazados.AgregarBarco("Destructor", 1, 2, "Horizontal");
+        acorazados.AgregarBarco(Barcos.Destructor, 1, 2, Orientacion.Horizontal);
         
         acorazados.ConsultarBarco(1, 2).Should().Be("d");
         acorazados.ConsultarBarco(2, 2).Should().Be("d");
@@ -53,7 +53,7 @@ public class AcorazadosTest
     {
         var acorazados = new Acorazados();
         
-        acorazados.AgregarBarco("Portaviones", 1, 3, "Horizontal");
+        acorazados.AgregarBarco(Barcos.Portaaviones, 1, 3, Orientacion.Horizontal);
         
         acorazados.ConsultarBarco(1, 3).Should().Be("c");
         acorazados.ConsultarBarco(2, 3).Should().Be("c");
@@ -66,7 +66,7 @@ public class AcorazadosTest
     {
         var acorazados = new Acorazados();
         
-        acorazados.AgregarBarco("Portaviones", 1, 3, "Vertical");
+        acorazados.AgregarBarco(Barcos.Portaaviones, 1, 3, Orientacion.Vertical);
         
         acorazados.ConsultarBarco(1, 3).Should().Be("c");
         acorazados.ConsultarBarco(1, 4).Should().Be("c");
@@ -74,74 +74,4 @@ public class AcorazadosTest
         acorazados.ConsultarBarco(1, 6).Should().Be("c");
     }
     
-
-    
-    
-    
-    
-    
-
-    public class Acorazados
-    {
-        private string[,] _tablero { get; set; }
-
-        public Acorazados()
-        {
-            _tablero = new string[10, 10];
-        }
-
-        public int ObtenerNumeroFilasTablero() => _tablero.GetLength(0);
-
-        public int ObtenerNumeroColumnasTablero() => _tablero.GetLength(1);
-
-        public void AgregarBarco(string barco, int x, int y, string posicion = "Horizontal")
-        {
-            var indicativoBarco = string.Empty;
-
-            if (barco == "Cañonero")
-                indicativoBarco = "g";
-            
-            if (barco == "Destructor")
-                indicativoBarco = "d";
-            
-            if (barco == "Portaviones")
-                indicativoBarco = "c";
-            
-            _tablero[x, y] = indicativoBarco;
-
-            if (posicion == "Vertical")
-            {
-                if (indicativoBarco == "d")
-                {
-                    _tablero[x, y + 1] = indicativoBarco;
-                    _tablero[x, y + 2] = indicativoBarco;
-                }
-                
-                if (indicativoBarco == "c")
-                {
-                    _tablero[x, y + 1] = indicativoBarco;
-                    _tablero[x, y + 2] = indicativoBarco; 
-                    _tablero[x, y + 3] = indicativoBarco; 
-                }
-            }
-
-            if (posicion == "Horizontal")
-            {
-                if (indicativoBarco == "d")
-                {
-                    _tablero[x + 1, y] = indicativoBarco;
-                    _tablero[x + 2, y] = indicativoBarco; 
-                }
-                
-                if (indicativoBarco == "c")
-                {
-                    _tablero[x + 1, y] = indicativoBarco;
-                    _tablero[x + 2, y] = indicativoBarco; 
-                    _tablero[x + 3, y] = indicativoBarco; 
-                }
-            }
-        }
-
-        public string ConsultarBarco(int x, int y) => _tablero[x, y];
-    }
 }
