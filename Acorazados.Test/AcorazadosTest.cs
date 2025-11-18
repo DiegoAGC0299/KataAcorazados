@@ -36,6 +36,20 @@ public class AcorazadosTest
         acorazados.ConsultarBarco(1, 4).Should().Be("d");
     }
     
+    [Fact]
+    public void Si_AgregoDestructorConLaCoordenada1_2EnPosicionHorizontal_Debe_ExistirDestructorEnLaCoordenada1_22_2Y3_2()
+    {
+        var acorazados = new Acorazados();
+        
+        acorazados.AgregarBarco("Destructor", 1, 2, "Horizontal");
+        
+        acorazados.ConsultarBarco(1, 2).Should().Be("d");
+        acorazados.ConsultarBarco(2, 2).Should().Be("d");
+        acorazados.ConsultarBarco(3, 2).Should().Be("d");
+    }
+    
+    
+    
     
     
 
