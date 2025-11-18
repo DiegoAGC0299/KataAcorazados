@@ -21,8 +21,10 @@ public class AcorazadosTest
 
         acorazados.AgregarBarco("Cañonero", 1, 1);
 
-        acorazados.ExisteBarco(1, 1).Should().BeTrue();
+        acorazados.ConsultarBarco(1, 1).Should().Be("g");
     }
+    
+    
     
 
     public class Acorazados
@@ -42,9 +44,9 @@ public class AcorazadosTest
         {
         }
 
-        public bool ExisteBarco(int x, int y)
+        public string ConsultarBarco(int x, int y)
         {
-            return true;
+            return "g";
         }
     }
 }
