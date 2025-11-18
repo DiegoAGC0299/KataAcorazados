@@ -89,6 +89,9 @@ public class AcorazadosTest
             if (barco == "Destructor")
                 indicativoBarco = "d";
             
+            if (barco == "Portaviones")
+                indicativoBarco = "c";
+            
             _tablero[x, y] = indicativoBarco;
 
             if (posicion == "Vertical")
@@ -106,6 +109,13 @@ public class AcorazadosTest
                 {
                     _tablero[x + 1, y] = indicativoBarco;
                     _tablero[x + 2, y] = indicativoBarco; 
+                }
+                
+                if (indicativoBarco == "c")
+                {
+                    _tablero[x + 1, y] = indicativoBarco;
+                    _tablero[x + 2, y] = indicativoBarco; 
+                    _tablero[x + 3, y] = indicativoBarco; 
                 }
             }
         }
