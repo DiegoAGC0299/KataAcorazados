@@ -66,7 +66,7 @@ public class AcorazadosTest
     }
     
     [Fact]
-    public void Si_NoHayBarcosEnElTablero_ReciboUnDisparoConCoordenadaIndicadaYEsMar_Debe_RetornarMensajeAguaYMarcarLaCoordenadaConO()
+    public void Si_NoHayBarcosEnElTablero_ReciboUnDisparoConCoordenada1_1_Debe_RetornarMensajeAguaYMarcarLaCoordenadaConO()
     {
         var acorazados = new Acorazados();
 
@@ -78,7 +78,7 @@ public class AcorazadosTest
     }
     
     [Fact]
-    public void Si_HayUnBarcoEnElTablero_ReciboUnDisparoConCoordenadaIndicadaYHayCoincidencia_Debe_RetornarMensajeTiroExitosoYMarcarLaCoordenadaConX()
+    public void Si_HayUnDestructorEnElTablero_ReciboUnDisparoConCoordenada1_1_Debe_RetornarMensajeTiroExitosoYMarcarLaCoordenadaConx()
     {
         var acorazados = new Acorazados();
         acorazados.AgregarBarco(Barcos.Destructor, 1, 2);
