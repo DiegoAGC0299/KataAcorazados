@@ -226,6 +226,17 @@ public class AcorazadosTest
         respuesta.Should().ThrowExactly<ArgumentOutOfRangeException>()
             .WithMessage("Excede el limite del tablero (parameter 'x')");
     }
+    
+    [Fact]
+    public void Si_PosicionoUnPortaavionesEn9_9Vertical_Debe_ArrojarExcepcionPorFueraDeltablero()
+    {
+        var acorazados = new Acorazados();
+        
+        Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 9, 9);
+        
+        respuesta.Should().ThrowExactly<ArgumentOutOfRangeException>()
+            .WithMessage("Excede el limite del tablero (parameter 'y')");
+    }
 
 
     
