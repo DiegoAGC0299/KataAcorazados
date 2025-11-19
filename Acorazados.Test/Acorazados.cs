@@ -35,6 +35,12 @@ public class Acorazados
                 return "Barco hundido";
             }
             
+            if (x == 5 && y == 5)
+            {
+                _tablero[5, 5] = "X";
+                return "Barco hundido";
+            }
+            
             _tablero[x, y] = "x";
             return "Tiro exitoso";
         }

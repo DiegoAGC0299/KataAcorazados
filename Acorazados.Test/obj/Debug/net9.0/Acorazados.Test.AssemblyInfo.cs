@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Acorazados.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a6c81b16b62b3e1dd5a7c3e9da689b46cc8ad75")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3502188bc007cdf3216023d775a80141315ad57a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acorazados.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acorazados.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
