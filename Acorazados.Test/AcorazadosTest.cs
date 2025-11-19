@@ -176,6 +176,22 @@ public class AcorazadosTest
         respuesta.Should().ThrowExactly<InvalidOperationException>()
             .WithMessage("No se pueden adicionar mas de dos destructores");
     }
+    [Fact]
+    public void Si_AgregoCincoCanoneras_Debe_ArrojarExcepcion ()
+    {
+        var acorazados = new Acorazados();
+        acorazados.AgregarBarco(Barcos.Canonero, 8, 1, Orientacion.Vertical);
+        acorazados.AgregarBarco(Barcos.Canonero, 7, 1, Orientacion.Vertical);
+        acorazados.AgregarBarco(Barcos.Canonero, 6, 1, Orientacion.Vertical);
+        acorazados.AgregarBarco(Barcos.Canonero, 5, 1, Orientacion.Vertical);
+        
+        Action respuesta = () => acorazados.AgregarBarco(Barcos.Canonero, 4, 1, Orientacion.Vertical);
+        
+        respuesta.Should().ThrowExactly<InvalidOperationException>()
+            .WithMessage("No se pueden adicionar mas de cuatro cañoneros");
+    }
+
+
     
     
     
