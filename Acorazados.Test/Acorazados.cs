@@ -92,8 +92,11 @@ public class Acorazados
             if (orientacion == Orientacion.Vertical) y++;
 
             if (orientacion == Orientacion.Horizontal) x++;
-            Tablero[x, y] = barco.Simbolo;
             
+            if (Tablero[x, y] != null)
+                throw new InvalidOperationException($"Ya se encuentra un barco ubicado en la coordenada {x},{y}");
+            
+            Tablero[x, y] = barco.Simbolo;
             barco.Coordenadas.Add(new Coordenada(x,y));
         }
         
