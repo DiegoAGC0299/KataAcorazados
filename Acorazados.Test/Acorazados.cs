@@ -18,9 +18,6 @@ public class Acorazados
 
     public void AgregarBarco(Barcos barco, int x, int y, Orientacion orientacion = Orientacion.Horizontal)
     {
-        if (Tablero[x, y] != null)
-            throw new InvalidOperationException("Ya se encuentra un barco ubicado en la coordenada 1,1");
-            
         LanzarExcepcionSiNumeroPermitidoDeBarcosSuperaLimite(barco);
         PosicionarBarcoEnCasillas(barco, x, y, orientacion);
     }
@@ -84,23 +81,27 @@ public class Acorazados
 
     private void PosicionarBarcoEnCasillas(Barcos barco, int x, int y, Orientacion orientacion)
     {
-        Tablero[x, y] = barco.Simbolo;
-        barco.Coordenadas.Add(new Coordenada(x, y));
-        
-        for (var i = 1; i < barco.Casillas; i++)
+        for (var i = 1; i <= barco.Casillas; i++)
         {
-            if (orientacion == Orientacion.Vertical) y++;
-
-            if (orientacion == Orientacion.Horizontal) x++;
+            if (i > 1)
+            {
+                if (orientacion == Orientacion.Vertical) y++;
+                if (orientacion == Orientacion.Horizontal) x++;
+            }
             
-            if (Tablero[x, y] != null)
-                throw new InvalidOperationException($"Ya se encuentra un barco ubicado en la coordenada {x},{y}");
+            LanzarExcepcionSiSeSobreponeUnBarco(x, y);
             
             Tablero[x, y] = barco.Simbolo;
             barco.Coordenadas.Add(new Coordenada(x,y));
         }
         
         _listaBarcos.Add(barco);
+    }
+
+    private void LanzarExcepcionSiSeSobreponeUnBarco(int x, int y)
+    {
+        if (Tablero[x, y] != null)
+            throw new InvalidOperationException($"Ya se encuentra un barco ubicado en la coordenada {x},{y}");
     }
 
     private void LanzarExcepcionSiNumeroPermitidoDeBarcosSuperaLimite(Barcos barco)
