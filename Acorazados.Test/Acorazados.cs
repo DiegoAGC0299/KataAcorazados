@@ -131,12 +131,12 @@ public class Acorazados
 
     public void AgregarJugador(string david)
     {
-        throw new NotImplementedException();
+        
     }
 
     public Jugador ObtenerJugador(int i)
     {
-        throw new NotImplementedException();
+        return new Jugador();
     }
 }
 
@@ -148,5 +148,5 @@ public class Coordenada(int x, int y)
 
 public class Jugador
 {
-    public object Tablero { get; set; }
+    public object Tablero { get; set; } = new  object();
 }
