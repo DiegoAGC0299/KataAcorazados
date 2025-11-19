@@ -151,7 +151,18 @@ public class AcorazadosTest
         acorazados.ConsultarValorPorCoordenada(8, 2).Should().Be("X");
         acorazados.ConsultarValorPorCoordenada(8, 3).Should().Be("X");
         acorazados.ConsultarValorPorCoordenada(8, 4).Should().Be("X");
+    }
 
+    [Fact]
+    public void Si_AgregoUnSegundoPortaaviones_Debe_ArrojarExcepcion ()
+    {
+        var acorazados = new Acorazados();
+        acorazados.AgregarBarco(Barcos.Portaaviones, 8, 1, Orientacion.Vertical);
+        
+       Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 7, 1, Orientacion.Vertical);
+        
+       respuesta.Should().ThrowExactly<InvalidOperationException>()
+           .WithMessage("No se pueden adicionar mas de un portaaviones");
     }
     
     
