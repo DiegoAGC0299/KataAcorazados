@@ -23,11 +23,11 @@ public class Acorazados
 
     public string ConsultarValorPorCoordenada(int x, int y) => _tablero[x, y];
 
-    public string RecibirDisparo(int i, int i1)
+    public string RecibirDisparo(int x, int y)
     {
-        if (i == 1 && i1 == 1)
+        if (x == 1 && y == 1)
         {
-            _tablero[i, i] = "o";
+            _tablero[x, y] = "o";
             return "Agua";
         }
             
