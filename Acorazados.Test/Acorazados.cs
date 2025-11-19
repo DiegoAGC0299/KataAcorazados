@@ -18,6 +18,9 @@ public class Acorazados
         if (listaBarcos.Count(x => x.Barco == TiposBarcos.Destructor) == 2)
             throw new InvalidOperationException("No se pueden adicionar mas de dos destructores");
         
+        if (listaBarcos.Count(x => x.Barco == TiposBarcos.Canonero) == 4)
+            throw new InvalidOperationException("No se pueden adicionar mas de cuatro cañoneros");
+        
         listaBarcos.Add(barco);
         
         _tablero[x, y] = barco.Simbolo;
