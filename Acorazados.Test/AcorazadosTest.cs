@@ -204,6 +204,18 @@ public class AcorazadosTest
             .WithMessage("Ya se encuentra un barco ubicado en la coordenada 1,1");
     }
 
+    [Fact]
+    public void Si_PosicionoUnPortaavionesEn1_3HorizontalYUnSegundoEn1_1Vertical_Debe_ArrojarExcepcion()
+    {
+        var acorazados = new Acorazados();
+        acorazados.AgregarBarco(Barcos.Portaaviones, 1, 3, Orientacion.Horizontal);
+        
+        Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 1, 1, Orientacion.Vertical);
+        
+        respuesta.Should().ThrowExactly<InvalidOperationException>()
+            .WithMessage("Ya se encuentra un barco ubicado en la coordenada 1,3");
+    }
+
 
     
     
