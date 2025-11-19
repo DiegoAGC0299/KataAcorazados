@@ -21,5 +21,10 @@ public class Acorazados
         }
     }
 
-    public string ConsultarBarco(int x, int y) => _tablero[x, y];
+    public string ConsultarValorPorCoordenada(int x, int y) => _tablero[x, y];
+
+    public string RecibirDisparo(int i, int i1)
+    {
+        throw new NotImplementedException();
+    }
 }

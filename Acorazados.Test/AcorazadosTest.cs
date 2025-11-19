@@ -12,7 +12,7 @@ public class AcorazadosTest
 
         acorazados.AgregarBarco(Barcos.Canonero, 1, 1);
 
-        acorazados.ConsultarBarco(1, 1).Should().Be("g");
+        acorazados.ConsultarValorPorCoordenada(1, 1).Should().Be("g");
     }
 
     [Fact]
@@ -22,9 +22,9 @@ public class AcorazadosTest
         
         acorazados.AgregarBarco(Barcos.Destructor, 1, 2, Orientacion.Vertical);
         
-        acorazados.ConsultarBarco(1, 2).Should().Be("d");
-        acorazados.ConsultarBarco(1, 3).Should().Be("d");
-        acorazados.ConsultarBarco(1, 4).Should().Be("d");
+        acorazados.ConsultarValorPorCoordenada(1, 2).Should().Be("d");
+        acorazados.ConsultarValorPorCoordenada(1, 3).Should().Be("d");
+        acorazados.ConsultarValorPorCoordenada(1, 4).Should().Be("d");
     }
     
     [Fact]
@@ -34,9 +34,9 @@ public class AcorazadosTest
         
         acorazados.AgregarBarco(Barcos.Destructor, 1, 2, Orientacion.Horizontal);
         
-        acorazados.ConsultarBarco(1, 2).Should().Be("d");
-        acorazados.ConsultarBarco(2, 2).Should().Be("d");
-        acorazados.ConsultarBarco(3, 2).Should().Be("d");
+        acorazados.ConsultarValorPorCoordenada(1, 2).Should().Be("d");
+        acorazados.ConsultarValorPorCoordenada(2, 2).Should().Be("d");
+        acorazados.ConsultarValorPorCoordenada(3, 2).Should().Be("d");
     }
     
     [Fact]
@@ -46,10 +46,10 @@ public class AcorazadosTest
         
         acorazados.AgregarBarco(Barcos.Portaaviones, 1, 3, Orientacion.Horizontal);
         
-        acorazados.ConsultarBarco(1, 3).Should().Be("c");
-        acorazados.ConsultarBarco(2, 3).Should().Be("c");
-        acorazados.ConsultarBarco(3, 3).Should().Be("c");
-        acorazados.ConsultarBarco(4, 3).Should().Be("c");
+        acorazados.ConsultarValorPorCoordenada(1, 3).Should().Be("c");
+        acorazados.ConsultarValorPorCoordenada(2, 3).Should().Be("c");
+        acorazados.ConsultarValorPorCoordenada(3, 3).Should().Be("c");
+        acorazados.ConsultarValorPorCoordenada(4, 3).Should().Be("c");
     }
     
     [Fact]
@@ -59,10 +59,22 @@ public class AcorazadosTest
         
         acorazados.AgregarBarco(Barcos.Portaaviones, 1, 3, Orientacion.Vertical);
         
-        acorazados.ConsultarBarco(1, 3).Should().Be("c");
-        acorazados.ConsultarBarco(1, 4).Should().Be("c");
-        acorazados.ConsultarBarco(1, 5).Should().Be("c");
-        acorazados.ConsultarBarco(1, 6).Should().Be("c");
+        acorazados.ConsultarValorPorCoordenada(1, 3).Should().Be("c");
+        acorazados.ConsultarValorPorCoordenada(1, 4).Should().Be("c");
+        acorazados.ConsultarValorPorCoordenada(1, 5).Should().Be("c");
+        acorazados.ConsultarValorPorCoordenada(1, 6).Should().Be("c");
+    }
+    
+    [Fact]
+    public void Si_NoHayBarcosEnElTablero_ReciboUnDisparoConCoordenadaIndicadaYEsMar_Debe_RetornarMensajeAguaYMarcarLaCoordenadaConO()
+    {
+        var acorazados = new Acorazados();
+
+        var mensaje = acorazados.RecibirDisparo(1, 1);
+
+        mensaje.Should().Be("Agua");
+        acorazados.ConsultarValorPorCoordenada(1, 1).Should().Be("o");
+
     }
     
 }
