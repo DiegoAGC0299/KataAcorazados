@@ -92,6 +92,9 @@ public class Acorazados
             if (x > Tablero.GetLength(0) - 1)
                 throw new ArgumentOutOfRangeException(nameof(x), "Excede el limite del tablero");
             
+            if (y > Tablero.GetLength(1) - 1)
+                throw new ArgumentOutOfRangeException(nameof(y), "Excede el limite del tablero");
+            
             LanzarExcepcionSiSeSobreponeUnBarco(x, y);
             
             Tablero[x, y] = barco.Simbolo;

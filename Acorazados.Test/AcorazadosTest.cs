@@ -232,7 +232,7 @@ public class AcorazadosTest
     {
         var acorazados = new Acorazados();
         
-        Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 9, 9);
+        Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 9, 9, Orientacion.Vertical);
         
         respuesta.Should().ThrowExactly<ArgumentOutOfRangeException>()
             .WithMessage("Excede el limite del tablero (parameter 'y')");
