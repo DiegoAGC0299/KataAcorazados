@@ -126,4 +126,7 @@ public class Tablero
         _indiceXMaximo = Cuadro.GetLength(0) - 1;
         _indiceYMaximo = Cuadro.GetLength(1) - 1;
     }
+
+    public bool ExistenBarcos()
+        => _listaBarcos.Any();
 }

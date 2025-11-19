@@ -28,5 +28,23 @@ public class AcorazadosTest
         
         resultado.Should().ThrowExactly<InvalidOperationException>("No se pueden agregar más de dos jugadores");
     }
+
+    [Fact]
+    public void Si_InicialElJuegoYUnoDeLosDosJugadoresNoTieneBarcos_Deben_GenerarExcepcion()
+    {
+        var acorazados = new  Acorazados();
+        acorazados.AgregarJugador("David");
+        acorazados.AgregarJugador("Diego");
+        var jugadorUno = acorazados.ObtenerJugador(0);
+        jugadorUno.Tablero.AgregarBarco(Barcos.Canonero, 1,1);
+
+        Action respuesta = () =>  acorazados.Start();
+        
+        respuesta
+            .Should()
+            .ThrowExactly<InvalidOperationException>()
+            .WithMessage("Ambos jugadores deben tener barcos en el tablero");
+        
+    }
     
 }

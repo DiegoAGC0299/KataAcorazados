@@ -13,7 +13,13 @@ public class Acorazados
     }
 
     public Jugador ObtenerJugador(int indice)
-        =>  _jugadores[indice]; 
+        =>  _jugadores[indice];
+
+    public void Start()
+    {
+        if (_jugadores.Count(a => a.Tablero.ExistenBarcos()) != _jugadores.Count)
+            throw new InvalidOperationException("Ambos jugadores deben tener barcos en el tablero");
+    }
 }
 
 public class Jugador(string nombre)
