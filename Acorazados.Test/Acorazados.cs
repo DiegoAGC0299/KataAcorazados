@@ -15,7 +15,7 @@ public class Acorazados
         for (int i = 1; i < barco.Casillas; i++)
         {
             if (orientacion == Orientacion.Vertical) y++;
-            
+
             if (orientacion == Orientacion.Horizontal) x++;
             _tablero[x, y] = barco.Simbolo;
         }
@@ -25,19 +25,13 @@ public class Acorazados
 
     public string RecibirDisparo(int x, int y)
     {
-        if ((x == 1 && y == 2) || (x == 2 && y == 2 ))
+        if (_tablero[x, y] is not null)
         {
             _tablero[x, y] = "x";
             return "Tiro exitoso";
-            
         }
-        if (x == 1 && y == 1)
-        {
-            _tablero[x, y] = "o";
-            return "Agua";
-        }
-            
         
-        return string.Empty;
+        _tablero[x, y] = "o";
+        return "Agua";
     }
 }
