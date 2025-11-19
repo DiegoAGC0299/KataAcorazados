@@ -128,6 +128,16 @@ public class Acorazados
         _indiceXMaximo = Tablero.GetLength(0) - 1;
         _indiceYMaximo = Tablero.GetLength(1) - 1;
     }
+
+    public void AgregarJugador(string david)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Jugador ObtenerJugador(int i)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class Coordenada(int x, int y)
@@ -136,3 +146,7 @@ public class Coordenada(int x, int y)
     public int Y { get; set; } = y;
 }
 
+public class Jugador
+{
+    public object Tablero { get; set; }
+}

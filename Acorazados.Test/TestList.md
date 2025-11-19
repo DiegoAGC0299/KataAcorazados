@@ -11,4 +11,9 @@
 - [x] Si agrego dos portaaviones debe arrojar excepcion 
 - [x] Si agrego tres destructores debe arrojar excepcion 
 - [x] Si agrego cinco cañoneros debe arrojar excepcion
-- [] Si agrego dos cañoneros en la coordenada 1_1 debe arrojar excepción
+- [x] Si agrego dos cañoneros en la coordenada 1_1 debe arrojar excepción
+
+#Jugadores
+- [ ] Si agrego un jugador, debe existir un jugador con un tablero
+- [ ] Si agrego más de dos jugadores, debe lanzar excepción
+- 
