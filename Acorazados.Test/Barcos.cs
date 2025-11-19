@@ -5,6 +5,7 @@ public record Barcos
     public TiposBarcos Barco { get; set; }
     public int Casillas{ get; set; }
     public string Simbolo { get; set; }
+    public List<Coordenada> Coordenadas { get; set; }
     
     public static Barcos Destructor =>  new Barcos(TiposBarcos.Destructor, 3, "d");
     public static Barcos Portaaviones =>  new Barcos(TiposBarcos.Portaaviones, 4, "c");
