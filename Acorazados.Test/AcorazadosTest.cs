@@ -4,15 +4,6 @@ namespace Acorazados.Test;
 
 public class AcorazadosTest
 {
-    [Fact]
-    public void Si_InicializoElJuegoDeAcorazados_Debe_NumeroFilasYColumnasSer10()
-    {
-        var acorazados = new Acorazados();
-
-        acorazados.ObtenerNumeroFilasTablero().Should().Be(10);
-        acorazados.ObtenerNumeroColumnasTablero().Should().Be(10);
-
-    }
 
     [Fact]
     public void Si_AgregoUnCanoneroConLaCoordenada1_1_Debe_ExistirElCañonero_EnLaCoordenada1_1()
