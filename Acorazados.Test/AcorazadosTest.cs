@@ -78,7 +78,7 @@ public class AcorazadosTest
     }
     
     [Fact]
-    public void Si_HayUnDestructorEnElTablero_ReciboUnDisparoConCoordenada1_1_Debe_RetornarMensajeTiroExitosoYMarcarLaCoordenadaConx()
+    public void Si_HayUnDestructorEnElTablero_ReciboUnDisparoConCoordenada1_2_Debe_RetornarMensajeTiroExitosoYMarcarLaCoordenadaConx()
     {
         var acorazados = new Acorazados();
         acorazados.AgregarBarco(Barcos.Destructor, 1, 2);
@@ -87,6 +87,21 @@ public class AcorazadosTest
 
         mensaje.Should().Be("Tiro exitoso");
         acorazados.ConsultarValorPorCoordenada(1, 2).Should().Be("x");
+
+    }
+    
+    [Fact]
+    public void Si_HayUnDestructorEnElTablero_ReciboDosDisparoConCoordenada1_2Y2_2_Debe_SegundoDisparoRetornarMensajeTiroExitosoYMarcarLaCoordenadasConx()
+    {
+        var acorazados = new Acorazados();
+        acorazados.AgregarBarco(Barcos.Destructor, 1, 2);
+        acorazados.RecibirDisparo(1, 2);
+        
+        var mensajeSegundoDisparo  = acorazados.RecibirDisparo(2, 2);
+
+        mensajeSegundoDisparo.Should().Be("Tiro exitoso");
+        acorazados.ConsultarValorPorCoordenada(1, 2).Should().Be("x");
+        acorazados.ConsultarValorPorCoordenada(2, 2).Should().Be("x");
 
     }
     
