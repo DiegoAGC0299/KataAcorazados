@@ -8,7 +8,7 @@
 - [x] Si hay un destructor en el tablero, recibo tres disparos con coordenadas 1,2 2,2 y 3,2, debe mostrar en mensaje del tercer disparo 'Barco hundido' y asignar 'X' en cada coordenada del barco.
 - [x] Si hay un cañonero en el tablero, recibo un disparo con coordenadas 1,2 y hay coincidencia, debe mostrar en mensaje del tiro 'Barco hundido' y asignar 'X' a la coordenada del barco.
 - [x] Si hay un portaaviones en el tablero, recibo cuatro disparos y hay coincidencia, debe mostrar en mensaje del ultimo tiro 'Barco hundido' y asignar 'X' a la coordenadas del barco.
-- Si agrego un segundo portaaviones debe arrojar excepcion 
-#Casos de borde
-- [] Si agrego portaviones con la coordenada 1,3 en la posición vertical, debe existir portaviones en la coordenada 1,3 1,4 1,5 y 1,6
-- [] Si agrego dos cañoneros con la coordenada 1,1. el segundo debe arrojar excepción.
+- [x] Si agrego dos portaaviones debe arrojar excepcion 
+- [x] Si agrego tres destructores debe arrojar excepcion 
+- [x] Si agrego cinco cañoneros debe arrojar excepcion
+- [] Si agrego dos cañoneros en la coordenada 1_1 debe arrojar excepción

@@ -176,8 +176,9 @@ public class AcorazadosTest
         respuesta.Should().ThrowExactly<InvalidOperationException>()
             .WithMessage("No se puede adicionar otro destructor");
     }
+    
     [Fact]
-    public void Si_AgregoCincoCanoneras_Debe_ArrojarExcepcion ()
+    public void Si_AgregoCincoCanoneros_Debe_ArrojarExcepcion ()
     {
         var acorazados = new Acorazados();
         acorazados.AgregarBarco(Barcos.Canonero, 8, 1, Orientacion.Vertical);
@@ -189,6 +190,18 @@ public class AcorazadosTest
         
         respuesta.Should().ThrowExactly<InvalidOperationException>()
             .WithMessage("No se puede adicionar otro cañonero");
+    }
+    
+    [Fact]
+    public void Si_AgregoDosCanonerosEnLaCoordenada1_1_Debe_ArrojarExcepcion()
+    {
+        var acorazados = new Acorazados();
+        acorazados.AgregarBarco(Barcos.Canonero, 1, 1);
+        
+        Action respuesta = () => acorazados.AgregarBarco(Barcos.Canonero, 1, 1);
+        
+        respuesta.Should().ThrowExactly<InvalidOperationException>()
+            .WithMessage("Ya se encuentra un barco ubicado en la coordenada 1,1");
     }
 
 
