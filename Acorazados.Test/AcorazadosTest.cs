@@ -105,4 +105,21 @@ public class AcorazadosTest
 
     }
     
+    [Fact]
+    public void Si_HayUnDestructorEnElTablero_ReciboTresDisparoConCoordenada1_22_2Y3_2_Debe_TercerDisparoRetornarMensajeBarcoHundidoYMarcarLaCoordenadasConX()
+    {
+        var acorazados = new Acorazados();
+        acorazados.AgregarBarco(Barcos.Destructor, 1, 2);
+        acorazados.RecibirDisparo(1, 2);
+        acorazados.RecibirDisparo(2, 2);
+        
+        var mensajeTercerDisparo  = acorazados.RecibirDisparo(3, 2);
+
+        mensajeTercerDisparo.Should().Be("Barco hundido");
+        acorazados.ConsultarValorPorCoordenada(1, 2).Should().Be("X");
+        acorazados.ConsultarValorPorCoordenada(2, 2).Should().Be("X");
+        acorazados.ConsultarValorPorCoordenada(3, 2).Should().Be("X");
+
+    }
+    
 }

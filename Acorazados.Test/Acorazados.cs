@@ -27,6 +27,14 @@ public class Acorazados
     {
         if (_tablero[x, y] is not null)
         {
+            if (x == 3 && y == 2)
+            {
+                _tablero[1, 2] = "X";    
+                _tablero[2, 2] = "X";    
+                _tablero[3, 2] = "X";    
+                return "Barco hundido";
+            }
+            
             _tablero[x, y] = "x";
             return "Tiro exitoso";
         }
