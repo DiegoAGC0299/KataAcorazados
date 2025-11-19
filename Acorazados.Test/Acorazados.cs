@@ -3,6 +3,7 @@
 public class Acorazados
 {
     private string[,] _tablero { get; }
+    private List<Barcos> listaBarcos = new List<Barcos>();
 
     public Acorazados()
     {
@@ -11,6 +12,11 @@ public class Acorazados
 
     public void AgregarBarco(Barcos barco, int x, int y, Orientacion orientacion = Orientacion.Horizontal)
     {
+        if (listaBarcos.Count(x => x.Barco == TiposBarcos.Portaaviones) == 1)
+            throw new InvalidOperationException("No se pueden adicionar mas de un portaaviones");
+        
+        listaBarcos.Add(barco);
+        
         _tablero[x, y] = barco.Simbolo;
         for (int i = 1; i < barco.Casillas; i++)
         {
@@ -19,6 +25,9 @@ public class Acorazados
             if (orientacion == Orientacion.Horizontal) x++;
             _tablero[x, y] = barco.Simbolo;
         }
+        
+        
+        
     }
 
     public string ConsultarValorPorCoordenada(int x, int y) => _tablero[x, y];
