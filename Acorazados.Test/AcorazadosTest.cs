@@ -223,8 +223,8 @@ public class AcorazadosTest
         
         Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 9, 1);
         
-        respuesta.Should().ThrowExactly<InvalidOperationException>()
-            .WithMessage("Excede el limite del tablero");
+        respuesta.Should().ThrowExactly<ArgumentOutOfRangeException>()
+            .WithMessage("Excede el limite del tablero (parameter 'x')");
     }
 
 

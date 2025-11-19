@@ -89,6 +89,9 @@ public class Acorazados
                 if (orientacion == Orientacion.Horizontal) x++;
             }
             
+            if (x > Tablero.GetLength(0) - 1)
+                throw new ArgumentOutOfRangeException(nameof(x), "Excede el limite del tablero");
+            
             LanzarExcepcionSiSeSobreponeUnBarco(x, y);
             
             Tablero[x, y] = barco.Simbolo;
