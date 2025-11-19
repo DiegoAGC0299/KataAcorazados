@@ -18,6 +18,9 @@ public class Acorazados
 
     public void AgregarBarco(Barcos barco, int x, int y, Orientacion orientacion = Orientacion.Horizontal)
     {
+        if (Tablero[x, y] != null)
+            throw new InvalidOperationException("Ya se encuentra un barco ubicado en la coordenada 1,1");
+            
         LanzarExcepcionSiNumeroPermitidoDeBarcosSuperaLimite(barco);
         PosicionarBarcoEnCasillas(barco, x, y, orientacion);
     }
