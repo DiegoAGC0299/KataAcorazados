@@ -223,8 +223,8 @@ public class AcorazadosTest
         
         Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 9, 1);
         
-        respuesta.Should().ThrowExactly<ArgumentOutOfRangeException>()
-            .WithMessage("Excede el limite del tablero (parameter 'x')");
+        respuesta.Should().ThrowExactly<InvalidOperationException>()
+            .WithMessage("Excede el limite del tablero");
     }
     
     [Fact]
@@ -234,8 +234,8 @@ public class AcorazadosTest
         
         Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 9, 9, Orientacion.Vertical);
         
-        respuesta.Should().ThrowExactly<ArgumentOutOfRangeException>()
-            .WithMessage("Excede el limite del tablero (parameter 'y')");
+        respuesta.Should().ThrowExactly<InvalidOperationException>()
+            .WithMessage("Excede el limite del tablero");
     }
 
 

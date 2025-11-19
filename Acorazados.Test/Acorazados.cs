@@ -10,11 +10,16 @@ public class Acorazados
     private const string MensajeTiroAlAgua = "Agua";
     private string[,] Tablero { get; }
     private readonly List<Barcos> _listaBarcos = [];
+    private int _indiceXMaximo;
+    private int _indiceYMaximo;
 
     public Acorazados()
     {
         Tablero = new string[10, 10];
+        CalcularIndicesMaximos();
     }
+
+  
 
     public void AgregarBarco(Barcos barco, int x, int y, Orientacion orientacion = Orientacion.Horizontal)
     {
@@ -89,12 +94,8 @@ public class Acorazados
                 if (orientacion == Orientacion.Horizontal) x++;
             }
             
-            if (x > Tablero.GetLength(0) - 1)
-                throw new ArgumentOutOfRangeException(nameof(x), "Excede el limite del tablero");
-            
-            if (y > Tablero.GetLength(1) - 1)
-                throw new ArgumentOutOfRangeException(nameof(y), "Excede el limite del tablero");
-            
+            LanzarExcepcionSiCasillaEstaFueraDeLimiteDelTablero(x, y);
+
             LanzarExcepcionSiSeSobreponeUnBarco(x, y);
             
             Tablero[x, y] = barco.Simbolo;
@@ -102,6 +103,12 @@ public class Acorazados
         }
         
         _listaBarcos.Add(barco);
+    }
+
+    private void LanzarExcepcionSiCasillaEstaFueraDeLimiteDelTablero(int x, int y)
+    {
+        if (x > _indiceXMaximo || y > _indiceYMaximo)
+            throw new InvalidOperationException("Excede el limite del tablero");
     }
 
     private void LanzarExcepcionSiSeSobreponeUnBarco(int x, int y)
@@ -115,6 +122,12 @@ public class Acorazados
         if (_listaBarcos.Count(x => x.Tipo == barco.Tipo) == barco.CantidadPermitida)
             throw new InvalidOperationException($"No se puede adicionar otro {barco.Nombre}");
     }
+    
+    private void CalcularIndicesMaximos()
+    {
+        _indiceXMaximo = Tablero.GetLength(0) - 1;
+        _indiceYMaximo = Tablero.GetLength(1) - 1;
+    }
 }
 
 public class Coordenada(int x, int y)
@@ -122,3 +135,4 @@ public class Coordenada(int x, int y)
     public int X { get; set; } = x;
     public int Y { get; set; } = y;
 }
+
