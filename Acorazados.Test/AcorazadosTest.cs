@@ -215,6 +215,17 @@ public class AcorazadosTest
         respuesta.Should().ThrowExactly<InvalidOperationException>()
             .WithMessage("Ya se encuentra un barco ubicado en la coordenada 1,3");
     }
+    
+    [Fact]
+    public void Si_PosicionoUnPortaavionesEn9_1Horizontal_Debe_ArrojarExcepcionPorFueraDeltablero()
+    {
+        var acorazados = new Acorazados();
+        
+        Action respuesta = () => acorazados.AgregarBarco(Barcos.Portaaviones, 9, 1);
+        
+        respuesta.Should().ThrowExactly<InvalidOperationException>()
+            .WithMessage("Excede el limite del tablero");
+    }
 
 
     
