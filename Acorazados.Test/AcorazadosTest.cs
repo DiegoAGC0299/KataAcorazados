@@ -135,6 +135,25 @@ public class AcorazadosTest
 
     }
     
+    [Fact]
+    public void Si_HayUnPortaavionesEnElTableroConCoordenada_5_ReciboDisparoConCoordenada1_8_Debe_DisparoRetornarMensajeBarcoHundidoYMarcarLasCoordenadasDelBarcoConX()
+    {
+        var acorazados = new Acorazados();
+        acorazados.AgregarBarco(Barcos.Portaaviones, 8, 1, Orientacion.Vertical);
+        acorazados.RecibirDisparo(8, 1);
+        acorazados.RecibirDisparo(8, 2);
+        acorazados.RecibirDisparo(8, 3);
+                
+        var mensaje  = acorazados.RecibirDisparo(8, 4);
+
+        mensaje.Should().Be("Barco hundido");
+        acorazados.ConsultarValorPorCoordenada(8, 1).Should().Be("X");
+        acorazados.ConsultarValorPorCoordenada(8, 2).Should().Be("X");
+        acorazados.ConsultarValorPorCoordenada(8, 3).Should().Be("X");
+        acorazados.ConsultarValorPorCoordenada(8, 4).Should().Be("X");
+
+    }
+    
     
     
 }
