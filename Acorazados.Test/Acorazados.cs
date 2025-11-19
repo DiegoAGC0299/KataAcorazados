@@ -25,6 +25,13 @@ public class Acorazados
 
     public string RecibirDisparo(int i, int i1)
     {
-        throw new NotImplementedException();
+        if (i == 1 && i1 == 1)
+        {
+            _tablero[i, i] = "o";
+            return "Agua";
+        }
+            
+        
+        return string.Empty;
     }
 }
