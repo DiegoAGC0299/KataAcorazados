@@ -2,15 +2,14 @@
 
 public class Acorazados
 {
-    
-    public Acorazados()
-    {
-        
-    }
+    public List<Jugador> Jugadores { get; } = [];
 
     public void AgregarJugador(string nombre)
     {
+        if(Jugadores.Count == 2)
+            throw new InvalidOperationException("No se pueden agregar más de dos jugadores");
         
+        Jugadores.Add(new Jugador(nombre));
     }
 
     public Jugador ObtenerJugador(int indice)
