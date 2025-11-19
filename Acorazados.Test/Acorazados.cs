@@ -2,6 +2,12 @@
 
 public class Acorazados
 {
+    private const string MarcaTiroAlAgua = "o";
+    private const string MarcaTiroExitoso = "x";
+    private const string MarcaBarcoHundido = "X";
+    private const string MensajeBarcoHundido = "Barco hundido";
+    private const string MensajeTiroExitoso = "Tiro exitoso";
+    private const string MensajeTiroAlAgua = "Agua";
     private string[,] Tablero { get; }
     private readonly List<Barcos> _listaBarcos = [];
 
@@ -20,43 +26,63 @@ public class Acorazados
 
     public string RecibirDisparo(int x, int y)
     {
-        if (Tablero[x, y] != null)
+        if (EsTiroExitoso(x, y))
         {
-            if (x == 3 && y == 2)
-            {
-                Tablero[1, 2] = "X";    
-                Tablero[2, 2] = "X";    
-                Tablero[3, 2] = "X";    
-                return "Barco hundido";
-            }
+            var barco = ConsultarBarcoPorCoordenada(x, y);
             
-            if (x == 5 && y == 5)
-            {
-                Tablero[5, 5] = "X";
-                return "Barco hundido";
-            }
+            if (SeDebeHundirBarco(x, y, barco))
+                return HundirBarco(barco);
             
-            if (x == 8 && y == 4)
-            {
-                Tablero[8, 1] = "X";
-                Tablero[8, 2] = "X";
-                Tablero[8, 3] = "X";
-                Tablero[8, 4] = "X";
-                return "Barco hundido";
-            }
-            
-            Tablero[x, y] = "x";
-            return "Tiro exitoso";
+            return TiroExitoso(x, y);
+        }
+
+        return TiroAlAgua(x, y);
+    }
+
+    private bool EsTiroExitoso(int x, int y) => Tablero[x, y] != null;
+
+    private bool SeDebeHundirBarco(int x, int y, Barcos? barco) => ObtenerCasillasAtacadas(x, y, barco) == barco.Casillas;
+
+    private Barcos? ConsultarBarcoPorCoordenada(int x, int y) =>
+        _listaBarcos
+            .FirstOrDefault(b =>
+                b.Coordenadas.Any(c => c.X == x && c.Y == y));
+
+    private string HundirBarco(Barcos barco)
+    {
+        foreach (var coordenadaBarco in barco.Coordenadas) Tablero[coordenadaBarco.X, coordenadaBarco.Y] = MarcaBarcoHundido;
+        return MensajeBarcoHundido;
+    }
+
+    private int ObtenerCasillasAtacadas(int x, int y, Barcos? barco)
+    {
+        var casillasAtacadas = 0;
+
+        foreach (var coordenadaBarco in barco.Coordenadas)
+        {
+            if((coordenadaBarco.X == x && coordenadaBarco.Y == y) || Tablero[coordenadaBarco.X, coordenadaBarco.Y] == MarcaTiroExitoso)
+                casillasAtacadas++;
         }
         
-        Tablero[x, y] = "o";
-        return "Agua";
+        return casillasAtacadas;
     }
-    
+
+    private string TiroExitoso(int x, int y)
+    {
+        Tablero[x, y] = MarcaTiroExitoso;
+        return MensajeTiroExitoso;
+    }
+
+    private string TiroAlAgua(int x, int y)
+    {
+        Tablero[x, y] = MarcaTiroAlAgua;
+        return MensajeTiroAlAgua;
+    }
+
     private void PosicionarBarcoEnCasillas(Barcos barco, int x, int y, Orientacion orientacion)
     {
         Tablero[x, y] = barco.Simbolo;
-        Barcos.Coordenadas.Add(new Coordenada(x, y));
+        barco.Coordenadas.Add(new Coordenada(x, y));
         
         for (var i = 1; i < barco.Casillas; i++)
         {
@@ -65,7 +91,7 @@ public class Acorazados
             if (orientacion == Orientacion.Horizontal) x++;
             Tablero[x, y] = barco.Simbolo;
             
-            Barcos.Coordenadas.Add(new Coordenada(x,y));
+            barco.Coordenadas.Add(new Coordenada(x,y));
         }
         
         _listaBarcos.Add(barco);
@@ -80,6 +106,6 @@ public class Acorazados
 
 public class Coordenada(int x, int y)
 {
-    private int X { get; set; } = x;
-    private int Y { get; set; } = y;
+    public int X { get; set; } = x;
+    public int Y { get; set; } = y;
 }

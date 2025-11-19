@@ -6,7 +6,7 @@ public class Barcos(TiposBarcos tipo, string nombre, int casillas, string simbol
     public TiposBarcos Tipo { get; } = tipo;
     public int Casillas { get; } = casillas;
     public string Simbolo { get; } = simbolo;
-    public static List<Coordenada> Coordenadas => [];
+    public List<Coordenada> Coordenadas { get; } = [];
     public int CantidadPermitida { get; set; } = cantidadPermitida;
 
     public static Barcos Destructor => new(TiposBarcos.Destructor, "destructor", 3, "d", 2);

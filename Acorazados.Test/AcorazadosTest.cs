@@ -126,7 +126,7 @@ public class AcorazadosTest
     public void Si_HayUnCanoneroEnElTableroConCoordenada5_5_ReciboDisparoConCoordenada5_5_Debe_DisparoRetornarMensajeBarcoHundidoYMarcarLaCoordenada5_5ConX()
     {
         var acorazados = new Acorazados();
-        acorazados.AgregarBarco(Barcos.Destructor, 5, 5);
+        acorazados.AgregarBarco(Barcos.Canonero, 5, 5);
         
         var mensaje  = acorazados.RecibirDisparo(5, 5);
 
