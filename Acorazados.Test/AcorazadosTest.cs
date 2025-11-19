@@ -13,14 +13,8 @@ public class AcorazadosTest
 
         var jugador = acorazados.ObtenerJugador(0);
         
-        jugador.Should().NotBeNull();
+        jugador.Nombre.Should().Be("David");
         jugador.Tablero.Should().NotBeNull();
     }
-    
-    
-
-
-    
-    
     
 }
