@@ -14,6 +14,6 @@
 - [x] Si agrego dos cañoneros en la coordenada 1_1 debe arrojar excepción
 
 #Jugadores
-- [ ] Si agrego un jugador, debe existir un jugador con un tablero
+- [x] Si agrego un jugador, debe existir un jugador con un tablero
 - [ ] Si agrego más de dos jugadores, debe lanzar excepción
 - 
