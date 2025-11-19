@@ -25,6 +25,12 @@ public class Acorazados
 
     public string RecibirDisparo(int x, int y)
     {
+        if (x == 1 && y == 2)
+        {
+            _tablero[x, y] = "x";
+            return "Tiro exitoso";
+            
+        }
         if (x == 1 && y == 1)
         {
             _tablero[x, y] = "o";

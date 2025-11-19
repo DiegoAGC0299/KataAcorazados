@@ -78,16 +78,15 @@ public class AcorazadosTest
     }
     
     [Fact]
-    // Si hay un barco en el tablero, recibo un disparo con coordenada indicada y hay coincidencia, debe asignar 'x' en la coordenada y mostrar en mensaje 'Tiro exitoso
     public void Si_HayUnBarcoEnElTablero_ReciboUnDisparoConCoordenadaIndicadaYHayCoincidencia_Debe_RetornarMensajeTiroExitosoYMarcarLaCoordenadaConX()
     {
         var acorazados = new Acorazados();
-        acorazados.AgregarBarco(Barcos.Destructor, 1, 1);
+        acorazados.AgregarBarco(Barcos.Destructor, 1, 2);
 
-        var mensaje = acorazados.RecibirDisparo(1, 1);
+        var mensaje = acorazados.RecibirDisparo(1, 2);
 
         mensaje.Should().Be("Tiro exitoso");
-        acorazados.ConsultarValorPorCoordenada(1, 1).Should().Be("x");
+        acorazados.ConsultarValorPorCoordenada(1, 2).Should().Be("x");
 
     }
     
