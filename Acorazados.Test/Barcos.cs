@@ -1,21 +1,15 @@
 ﻿namespace Acorazados.Test;
 
-public record Barcos
+public class Barcos(TiposBarcos tipo, string nombre, int casillas, string simbolo, int cantidadPermitida)
 {
-    public TiposBarcos Barco { get; set; }
-    public int Casillas{ get; set; }
-    public string Simbolo { get; set; }
-    public List<Coordenada> Coordenadas { get; set; }
-    
-    public static Barcos Destructor =>  new Barcos(TiposBarcos.Destructor, 3, "d");
-    public static Barcos Portaaviones =>  new Barcos(TiposBarcos.Portaaviones, 4, "c");
-    public static Barcos Canonero =>  new Barcos(TiposBarcos.Canonero, 1, "g");
-    
+    public string Nombre { get; } = nombre;
+    public TiposBarcos Tipo { get; } = tipo;
+    public int Casillas { get; } = casillas;
+    public string Simbolo { get; } = simbolo;
+    public static List<Coordenada> Coordenadas => [];
+    public int CantidadPermitida { get; set; } = cantidadPermitida;
 
-    public Barcos(TiposBarcos tipoBarco, int casillas, string simbolo)
-    {
-        Barco = tipoBarco;
-        Casillas = casillas;
-        Simbolo = simbolo;
-    }
+    public static Barcos Destructor => new(TiposBarcos.Destructor, "destructor", 3, "d", 2);
+    public static Barcos Portaaviones => new(TiposBarcos.Portaaviones,  "portaaviones", 4, "c", 1);
+    public static Barcos Canonero => new(TiposBarcos.Canonero,  "cañonero", 1, "g", 4);
 }
