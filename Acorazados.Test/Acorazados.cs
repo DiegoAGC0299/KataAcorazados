@@ -27,6 +27,9 @@ public class Acorazados
 
     public string Disparar(int i, int i1)
     {
+        if (Estado == EstadoJuego.NoIniciado)
+            throw new InvalidOperationException("Debe iniciar el juego para poder disparar");
+        
         var jugadorOponente = ObtenerJugador(_jugadorAtacado);
         var respuesta = jugadorOponente.Tablero.RecibirDisparo(i, i1);
         
