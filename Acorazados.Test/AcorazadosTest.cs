@@ -4,7 +4,8 @@ namespace Acorazados.Test;
 
 public class AcorazadosTest
 {
-    
+    private readonly IAcorazadosBuilder _acorazadosBuilder = new AcorazadosBuilder();
+
     [Fact]
     public void Si_AgregoUnJugador_Debe_ExistirUnJugadorConUnTablero()
     {
@@ -57,13 +58,15 @@ public class AcorazadosTest
     [Fact]
     public void Si_ComienzoElJuegoConJugadoresYBarcos_Debe_EstadoSerIniciado()
     {
-        var acorazados = new  Acorazados();
-        acorazados.AgregarJugador("David");
-        acorazados.AgregarJugador("Diego");
-        var jugadorUno = acorazados.ObtenerJugador(0);
-        jugadorUno.Tablero.AgregarBarco(Barcos.Canonero, 1,1);
-        var jugadorDos = acorazados.ObtenerJugador(1);
-        jugadorDos.Tablero.AgregarBarco(Barcos.Canonero, 1,1);
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
         
         acorazados.Start();
         
