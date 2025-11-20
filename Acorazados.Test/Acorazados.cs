@@ -27,22 +27,27 @@ public class Acorazados
 
     public string Disparar(int i, int i1)
     {
-        if (Estado == EstadoJuego.NoIniciado)
-            throw new InvalidOperationException("Debe iniciar el juego para poder disparar");
+        LanzarExcepcionSiElJuegoNoseHaIniciado();
         
         var jugadorOponente = ObtenerJugador(_jugadorAtacado);
         var respuesta = jugadorOponente.Tablero.RecibirDisparo(i, i1);
         
-        
-        
-        if(!jugadorOponente.Tablero.ExistenBarcos())
-            Estado = EstadoJuego.Finalizado;
+        VerificarJuegoFinalizado(jugadorOponente);
         
         _jugadorAtacado = _jugadorAtacado == 1 ?  0 : _jugadorAtacado + 1;
         return respuesta;
-        
-        
-        
+    }
+
+    private void VerificarJuegoFinalizado(Jugador jugadorOponente)
+    {
+        if(!jugadorOponente.Tablero.ExistenBarcos())
+            Estado = EstadoJuego.Finalizado;
+    }
+
+    private void LanzarExcepcionSiElJuegoNoseHaIniciado()
+    {
+        if (Estado == EstadoJuego.NoIniciado)
+            throw new InvalidOperationException("Debe iniciar el juego para poder disparar");
     }
 }
 
