@@ -379,6 +379,6 @@ public class AcorazadosTest
 
         Action resultado = () => acorazados.ImprimirReporte();
         
-        resultado.Should().ThrowExactly<InvalidOperationException>("El juego no se ha finalizado");
+        resultado.Should().ThrowExactly<InvalidOperationException>().WithMessage("El juego no se ha finalizado");
     }
 }
