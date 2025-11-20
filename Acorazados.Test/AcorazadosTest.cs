@@ -492,7 +492,6 @@ public class AcorazadosTest
             .ConstruirJugadorDos("Diego", tablero =>
             {
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
-                tablero.AgregarBarco(Barcos.Canonero, 1,2);
             }).Construir();
         acorazados.Iniciar();
         acorazados.Disparar(1, 2);
@@ -506,6 +505,7 @@ public class AcorazadosTest
         reporteGenerado.Should().Contain("Exitosos: 1");
 
     }
+    
     
     
 }
