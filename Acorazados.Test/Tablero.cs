@@ -29,7 +29,7 @@ public class Tablero
 
     public string RecibirDisparo(int x, int y)
     {
-        LanzarExcepcionSiCasillaEstaFueraDeLimiteDelTablero(x,y);
+        LanzarExcepcionSiCoordenadaEstaFueraDeLimiteDelTablero(x,y);
         
         if (EsTiroExitoso(x, y))
         {
@@ -95,7 +95,7 @@ public class Tablero
                 if (orientacion == Orientacion.Horizontal) x++;
             }
             
-            LanzarExcepcionSiCasillaEstaFueraDeLimiteDelTablero(x, y);
+            LanzarExcepcionSiCoordenadaEstaFueraDeLimiteDelTablero(x, y);
 
             LanzarExcepcionSiSeSobreponeUnBarco(x, y);
             
@@ -106,10 +106,10 @@ public class Tablero
         _listaBarcos.Add(barco);
     }
 
-    private void LanzarExcepcionSiCasillaEstaFueraDeLimiteDelTablero(int x, int y)
+    private void LanzarExcepcionSiCoordenadaEstaFueraDeLimiteDelTablero(int x, int y)
     {
         if (x > _indiceXMaximo || y > _indiceYMaximo || x < 0 || y < 0)
-            throw new InvalidOperationException("Excede el limite del tablero");
+            throw new InvalidOperationException("La coordenada excede el limite del tablero");
     }
 
     private void LanzarExcepcionSiSeSobreponeUnBarco(int x, int y)

@@ -39,7 +39,7 @@ public class AcorazadosTest
         var jugadorUno = acorazados.ObtenerJugador(0);
         jugadorUno.Tablero.AgregarBarco(Barcos.Canonero, 1,1);
 
-        Action respuesta = () =>  acorazados.Start();
+        Action respuesta = () =>  acorazados.Iniciar();
         
         respuesta
             .Should()
@@ -52,7 +52,7 @@ public class AcorazadosTest
     public void Si_InicializoElJuego_Debe_EstadoSerNoIniciado()
     {
         var acorazados = new  Acorazados();
-        acorazados.Estado.Should().Be(EstadoJuego.NoIniciado);
+        acorazados.EstadoJuego.Should().Be(EstadoJuego.NoIniciado);
     }
     
     [Fact]
@@ -68,9 +68,9 @@ public class AcorazadosTest
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
         
-        acorazados.Start();
+        acorazados.Iniciar();
         
-        acorazados.Estado.Should().Be(EstadoJuego.EnCurso);
+        acorazados.EstadoJuego.Should().Be(EstadoJuego.EnCurso);
     }
     
     [Fact]
@@ -85,7 +85,7 @@ public class AcorazadosTest
             {
                 tablero.AgregarBarco(Barcos.Destructor, 1,1);
             }).Construir();
-        acorazados.Start();
+        acorazados.Iniciar();
 
         acorazados.Disparar(1, 1).Should().Be("Tiro exitoso");
     }
@@ -103,7 +103,7 @@ public class AcorazadosTest
             {
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
-        acorazados.Start();
+        acorazados.Iniciar();
 
         acorazados.Disparar(5, 5).Should().Be("Agua");
     }
@@ -120,7 +120,7 @@ public class AcorazadosTest
             {
                 tablero.AgregarBarco(Barcos.Destructor, 1,1);
             }).Construir();
-        acorazados.Start();
+        acorazados.Iniciar();
 
         acorazados.Disparar(5, 5);
         
@@ -139,10 +139,10 @@ public class AcorazadosTest
             {
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
-        acorazados.Start();
+        acorazados.Iniciar();
         
         acorazados.Disparar(1, 1).Should().Be("Barco hundido");
-        acorazados.Estado.Should().Be(EstadoJuego.Finalizado);
+        acorazados.EstadoJuego.Should().Be(EstadoJuego.Finalizado);
     }
 
     [Fact]
@@ -176,7 +176,7 @@ public class AcorazadosTest
             {
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
-        acorazados.Start();
+        acorazados.Iniciar();
         acorazados.Disparar(1, 1);
         
         Action resultado = () => acorazados.Disparar(1, 1);
@@ -186,7 +186,7 @@ public class AcorazadosTest
 
     
     [Fact]
-    public void Si_CualquierjugadorDisparaaCoordenadasFueraDelRangoDelTablero_Debe_LanzarExcepcion()
+    public void Si_CualquierJugadorDisparaCoordenadasFueraDelRangoDelTablero_Debe_LanzarExcepcion()
     {
         var acorazados = _acorazadosBuilder
             .ConstruirJugadorUno("David", tablero =>
@@ -197,11 +197,11 @@ public class AcorazadosTest
             {
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
-        acorazados.Start();
+        acorazados.Iniciar();
         
         Action resultado = () => acorazados.Disparar(111, 11);
         
-        resultado.Should().ThrowExactly<InvalidOperationException>().WithMessage("Excede el limite del tablero");
+        resultado.Should().ThrowExactly<InvalidOperationException>().WithMessage("La coordenada excede el limite del tablero");
     }
 
 

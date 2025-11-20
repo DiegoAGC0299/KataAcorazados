@@ -223,7 +223,7 @@ public class TableroTest
         Action respuesta = () => tablero.AgregarBarco(Barcos.Portaaviones, 9, 1);
         
         respuesta.Should().ThrowExactly<InvalidOperationException>()
-            .WithMessage("Excede el limite del tablero");
+            .WithMessage("La coordenada excede el limite del tablero");
     }
     
     [Fact]
@@ -234,6 +234,6 @@ public class TableroTest
         Action respuesta = () => tablero.AgregarBarco(Barcos.Portaaviones, 9, 9, Orientacion.Vertical);
         
         respuesta.Should().ThrowExactly<InvalidOperationException>()
-            .WithMessage("Excede el limite del tablero");
+            .WithMessage("La coordenada excede el limite del tablero");
     }
 }
