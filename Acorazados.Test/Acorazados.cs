@@ -95,7 +95,7 @@ public class Acorazados
 
     private Jugador ObtenerJugadorEnTurnoActual() => ObtenerJugador(_indiceJugadorActual);
 
-    public string ImprimirReporte()
+    public string ImprimirReporte(Jugador jugadorSeleccionado)
     {
         LanzarExcepcionSiJuegoNoHaSidoFinalizado();
         return string.Empty;

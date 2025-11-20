@@ -377,8 +377,30 @@ public class AcorazadosTest
             }).Construir();
         acorazados.Iniciar();
 
-        Action resultado = () => acorazados.ImprimirReporte();
+        Action resultado = () => acorazados.ImprimirReporte(acorazados.ObtenerJugador(0));
         
         resultado.Should().ThrowExactly<InvalidOperationException>().WithMessage("El juego no se ha finalizado");
+    }
+
+    [Fact]
+    public void Si_Jugador1DisparaYElJuegoSeHaFinalizadoYSeImprimeReporteJugadorDos_Debe_TotalDeDisparosSer1()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Iniciar();
+        
+        acorazados.Disparar(1, 1);
+        var jugador2 = acorazados.ObtenerJugador(1);
+        
+        var reporteGenerado = acorazados.ImprimirReporte(jugador2);
+        reporteGenerado.Should().Contain("Disparos totales: 1");
+
     }
 }
