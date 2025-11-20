@@ -30,7 +30,7 @@ public class AcorazadosTest
     }
 
     [Fact]
-    public void Si_InicialElJuegoYUnoDeLosDosJugadoresNoTieneBarcos_Deben_GenerarExcepcion()
+    public void Si_InicialElJuegoYUnoDeLosDosJugadoresNoTieneBarcos_Debe_GenerarExcepcion()
     {
         var acorazados = new  Acorazados();
         acorazados.AgregarJugador("David");
@@ -45,6 +45,14 @@ public class AcorazadosTest
             .ThrowExactly<InvalidOperationException>()
             .WithMessage("Ambos jugadores deben tener barcos en el tablero");
         
+    }
+
+    [Fact]
+    public void Si_InicializoElJuego_Debe_EstadoSerNoIniciado()
+    {
+        var acorazados = new  Acorazados();
+
+        acorazados.Estado.Should().Be("NoIniciado");
     }
     
 }
