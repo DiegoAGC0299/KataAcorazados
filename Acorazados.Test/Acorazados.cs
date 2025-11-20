@@ -31,6 +31,8 @@ public class Acorazados
         var respuesta = jugadorEnTurno.Tablero.RecibirDisparo(i, i1);
         _jugadorAtacado = _jugadorAtacado == 1 ?  0 : _jugadorAtacado + 1;
         
+        Estado = "Finalizado";
+        
         return respuesta;
         
         
