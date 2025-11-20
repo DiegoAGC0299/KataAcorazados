@@ -172,4 +172,8 @@ public class Tablero
 
     public bool ExistenBarcos()
         => _listaBarcos.Any();
+
+    public int ObtenerDisparosTotales()
+        => Cuadro.Cast<string>()
+            .Count(x => !string.IsNullOrEmpty(x));
 }
