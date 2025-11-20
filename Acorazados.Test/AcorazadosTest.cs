@@ -145,6 +145,25 @@ public class AcorazadosTest
         acorazados.Estado.Should().Be(EstadoJuego.Finalizado);
     }
 
+    [Fact]
+    public void Si_DisparaYElEstadoDelJuegoEsNoIniciado_Debe_LanzarExcepcion()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+
+
+        Action resultado = () => acorazados.Disparar(1, 1);
+        
+        resultado.Should().ThrowExactly<InvalidOperationException>("Debe iniciar el juego para poder disparar");
+    }
+
     
     
 }
