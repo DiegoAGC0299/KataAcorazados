@@ -107,6 +107,25 @@ public class AcorazadosTest
 
         acorazados.Disparar(5, 5).Should().Be("Agua");
     }
+    
+    [Fact]
+    public void Si_JugadorUnoDisparoYJugadorDosDisparaAlJugadorUnoConCoordenada1_2_Debe_MostrarTiroExitoso()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Start();
+
+        acorazados.Disparar(5, 5);
+        
+        acorazados.Disparar(1, 2).Should().Be("Tiro exitoso");
+    }
 
     
     
