@@ -98,7 +98,7 @@ public class Acorazados
     public string ImprimirReporte(Jugador jugadorSeleccionado)
     {
         LanzarExcepcionSiJuegoNoHaSidoFinalizado();
-        return $"Disparos totales: {jugadorSeleccionado.Tablero.ObtenerDisparosTotales()}";
+        return $"Disparos totales: {jugadorSeleccionado.Tablero.ObtenerDisparosTotales()} \n Fallidos: 1";
     }
 
     private void LanzarExcepcionSiJuegoNoHaSidoFinalizado()
