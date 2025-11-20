@@ -126,6 +126,24 @@ public class AcorazadosTest
         
         acorazados.Disparar(1, 2).Should().Be("Tiro exitoso");
     }
+    
+    [Fact]
+    public void Si_JugadorUnoDisparaYJugadorDosQuedaConTodosLosBarcosHundidos_Debe_EstadoDelJuegoEstarFinalizado()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Start();
+        
+        acorazados.Disparar(1, 1).Should().Be("Barco hundido");
+        acorazados.Estado.Should().Be("Finalizado");
+    }
 
     
     
