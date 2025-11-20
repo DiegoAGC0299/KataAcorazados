@@ -27,11 +27,7 @@ public class Acorazados
 
     public string Disparar(int i, int i1)
     {
-        if (Estado == EstadoJuego.NoIniciado)
-            throw new InvalidOperationException("Debe iniciar el juego para poder disparar");
-        
-        if (Estado == EstadoJuego.Finalizado)
-            throw new InvalidOperationException("Debe iniciar un juego nuevo");
+        lanzarExcepcionesSiElJuegoNoEstaEnCurso();
 
         var jugadorOponente = ObtenerJugador(_jugadorAtacado);
         var respuesta = jugadorOponente.Tablero.RecibirDisparo(i, i1);
@@ -40,6 +36,15 @@ public class Acorazados
         
         _jugadorAtacado = _jugadorAtacado == 1 ?  0 : _jugadorAtacado + 1;
         return respuesta;
+    }
+
+    private void lanzarExcepcionesSiElJuegoNoEstaEnCurso()
+    {
+        if (Estado == EstadoJuego.NoIniciado)
+            throw new InvalidOperationException("Debe iniciar el juego para poder disparar");
+
+        if (Estado == EstadoJuego.Finalizado)
+            throw new InvalidOperationException("Debe iniciar un juego nuevo");
     }
 
     private void VerificarJuegoFinalizado(Jugador jugadorOponente)
