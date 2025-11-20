@@ -105,7 +105,7 @@ public class AcorazadosTest
             }).Construir();
         acorazados.Start();
 
-        acorazados.Disparar(1, 1).Should().Be("Agua");
+        acorazados.Disparar(5, 5).Should().Be("Agua");
     }
 
     

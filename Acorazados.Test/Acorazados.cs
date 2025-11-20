@@ -26,7 +26,8 @@ public class Acorazados
 
     public string Disparar(int i, int i1)
     {
-        return "Tiro exitoso";
+        var jugador =  ObtenerJugador(1);
+        return jugador.Tablero.RecibirDisparo(i, i1);
     }
 }
 
