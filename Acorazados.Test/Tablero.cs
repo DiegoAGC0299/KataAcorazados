@@ -29,6 +29,8 @@ public class Tablero
 
     public string RecibirDisparo(int x, int y)
     {
+        LanzarExcepcionSiCasillaEstaFueraDeLimiteDelTablero(x,y);
+        
         if (EsTiroExitoso(x, y))
         {
             var barco = ConsultarBarcoPorCoordenada(x, y);
