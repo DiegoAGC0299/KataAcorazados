@@ -198,11 +198,10 @@ public class AcorazadosTest
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
         acorazados.Start();
-        acorazados.Disparar(1, 1);
         
-        Action resultado = () => acorazados.Disparar(11, 11);
+        Action resultado = () => acorazados.Disparar(111, 11);
         
-        resultado.Should().ThrowExactly<InvalidOperationException>("Excede el limite del tablero");
+        resultado.Should().ThrowExactly<InvalidOperationException>().WithMessage("Excede el limite del tablero");
     }
 
 
