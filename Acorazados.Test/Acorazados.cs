@@ -26,7 +26,7 @@ public class Acorazados
 
     public string Disparar(int i, int i1)
     {
-        throw new NotImplementedException();
+        return "Tiro exitoso";
     }
 }
 
