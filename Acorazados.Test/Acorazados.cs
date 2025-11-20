@@ -1,4 +1,6 @@
-﻿namespace Acorazados.Test;
+﻿using System.Text;
+
+namespace Acorazados.Test;
 
 public class Acorazados
 {
@@ -29,6 +31,12 @@ public class Acorazados
         VerificarJuegoFinalizado(ObtenerJugadorOponente());
         
         return respuesta;
+    }
+    
+    public string Imprimir()
+    {
+        var jugadorActual = ObtenerJugadorEnTurnoActual();
+        return DibujarTableroJugador(jugadorActual);
     }
     
     private Jugador ObtenerJugadorOponente()
@@ -71,90 +79,19 @@ public class Acorazados
     private void IniciarJuego() => EstadoJuego = EstadoJuego.EnCurso;
     private void FinalizarJuego() => EstadoJuego = EstadoJuego.Finalizado;
 
-    public string Imprimir()
+    private string DibujarTableroJugador(Jugador jugadorActual)
     {
-        var jugadorActual = ObtenerJugadorEnTurnoActual();
+        var tableroJugador = new StringBuilder();
         
-        if (_indiceJugadorActual == 1)
-        {
-            if (jugadorActual.Tablero.ConsultarValorPorCoordenada(1, 1) == "x")
-            {
-               return $"  Jugador: {jugadorActual.Nombre}\n" +
-                       "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
-                       "0 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "1 |   | x | d | d |   |   |   |   |   |   |\n" +
-                       "2 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "3 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "4 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "5 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "6 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "7 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "8 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "9 |   |   |   |   |   |   |   |   |   |   |";
-            }
-            
-            if(jugadorActual.Tablero.ConsultarValorPorCoordenada(2,2) == "g")
-                return $"  Jugador: {jugadorActual.Nombre}\n" +
-                       "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
-                       "0 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "1 |   | X |   |   |   |   |   |   |   |   |\n" +
-                       "2 |   |   | g |   |   |   |   |   |   |   |\n" +
-                       "3 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "4 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "5 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "6 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "7 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "8 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "9 |   |   |   |   |   |   |   |   |   |   |";
-            
-            return $"  Jugador: {jugadorActual.Nombre}\n" +
-                   "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
-                   "0 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "1 |   | g |   |   |   |   |   |   |   |   |\n" +
-                   "2 |   |   | o |   |   |   |   |   |   |   |\n" +
-                   "3 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "4 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "5 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "6 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "7 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "8 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "9 |   |   |   |   |   |   |   |   |   |   |";
-        }
-            
+        AgregarLineaJugador(jugadorActual, tableroJugador);
+        AgregarDibujoTablero(jugadorActual, tableroJugador);
         
-        if(_indiceJugadorActual == 0)
-        {
-            if(jugadorActual.Tablero.ConsultarValorPorCoordenada(3,2) == "o")
-                return $"  Jugador: {jugadorActual.Nombre}\n" +
-                       "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
-                       "0 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "1 |   | g |   |   |   |   |   |   |   |   |\n" +
-                       "2 |   |   |   | o |   |   |   |   |   |   |\n" +
-                       "3 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "4 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "5 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "6 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "7 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "8 |   |   |   |   |   |   |   |   |   |   |\n" +
-                       "9 |   |   |   |   |   |   |   |   |   |   |";
-        }
-        
-        return $"  Jugador: {jugadorActual.Nombre}\n" +
-               "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
-               "0 |   |   |   |   |   |   |   |   |   |   |\n" +
-               "1 |   | g |   |   |   |   |   |   |   |   |\n" +
-               "2 |   |   |   |   |   |   |   |   |   |   |\n" +
-               "3 |   |   |   |   |   |   |   |   |   |   |\n" +
-               "4 |   |   |   |   |   |   |   |   |   |   |\n" +
-               "5 |   |   |   |   |   |   |   |   |   |   |\n" +
-               "6 |   |   |   |   |   |   |   |   |   |   |\n" +
-               "7 |   |   |   |   |   |   |   |   |   |   |\n" +
-               "8 |   |   |   |   |   |   |   |   |   |   |\n" +
-               "9 |   |   |   |   |   |   |   |   |   |   |";
+        return tableroJugador.ToString();
     }
 
-    private Jugador ObtenerJugadorEnTurnoActual()
-    {
-        return ObtenerJugador(_indiceJugadorActual);
-    }
+    private static void AgregarLineaJugador(Jugador jugadorActual, StringBuilder tableroJugador) => tableroJugador.Append($"  Jugador: {jugadorActual.Nombre}\n");
+
+    private static void AgregarDibujoTablero(Jugador jugadorActual, StringBuilder tableroJugador) => tableroJugador.Append(jugadorActual.Tablero.DibujarTablero());
+
+    private Jugador ObtenerJugadorEnTurnoActual() => ObtenerJugador(_indiceJugadorActual);
 }

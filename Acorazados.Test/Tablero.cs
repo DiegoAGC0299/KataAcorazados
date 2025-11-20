@@ -1,4 +1,6 @@
-﻿namespace Acorazados.Test;
+﻿using System.Text;
+
+namespace Acorazados.Test;
 
 public class Tablero
 {
@@ -18,7 +20,45 @@ public class Tablero
         Cuadro = new string[10, 10];
         CalcularIndicesMaximos();
     }
-    
+
+    public string DibujarTablero()
+    {
+        var dibujoTablero = new StringBuilder();
+        
+        DibujarEncabezado(dibujoTablero);
+        DibujarCuadro(dibujoTablero);
+        
+        return dibujoTablero.ToString();
+    }
+
+    private void DibujarCuadro(StringBuilder dibujoTablero)
+    {
+        for (int fila = 0; fila <= _indiceYMaximo; fila++)
+        {
+            dibujoTablero.Append($"{fila} ");
+            for (int columna = 0; columna <= _indiceXMaximo; columna++)
+            {
+                var celda =  Cuadro[columna, fila] ?? " ";
+                dibujoTablero.Append($"| {celda} ");
+            }
+            
+            dibujoTablero.Append("|");
+            if(fila != _indiceXMaximo)
+                dibujoTablero.Append("\n");
+                
+        }
+    }
+
+    private void DibujarEncabezado(StringBuilder dibujoTablero)
+    {
+        dibujoTablero.Append("  ");
+        for (int columna = 0; columna <= _indiceXMaximo; columna++)
+        {
+            dibujoTablero.Append($"| {columna} ");
+        }
+        dibujoTablero.Append("|\n");
+    }
+
     public void AgregarBarco(Barcos barco, int x, int y, Orientacion orientacion = Orientacion.Horizontal)
     {
         LanzarExcepcionSiNumeroPermitidoDeBarcosSuperaLimite(barco);
