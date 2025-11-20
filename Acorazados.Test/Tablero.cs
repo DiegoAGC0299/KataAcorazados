@@ -54,6 +54,7 @@ public class Tablero
     private string HundirBarco(Barcos barco)
     {
         foreach (var coordenadaBarco in barco.Coordenadas) Cuadro[coordenadaBarco.X, coordenadaBarco.Y] = MarcaBarcoHundido;
+        _listaBarcos.Remove(barco);
         return MensajeBarcoHundido;
     }
 

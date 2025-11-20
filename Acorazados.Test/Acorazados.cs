@@ -27,12 +27,15 @@ public class Acorazados
 
     public string Disparar(int i, int i1)
     {
-        var jugadorEnTurno = ObtenerJugador(_jugadorAtacado);
-        var respuesta = jugadorEnTurno.Tablero.RecibirDisparo(i, i1);
+        var jugadorOponente = ObtenerJugador(_jugadorAtacado);
+        var respuesta = jugadorOponente.Tablero.RecibirDisparo(i, i1);
+        
+        
+        
+        if(!jugadorOponente.Tablero.ExistenBarcos())
+            Estado = "Finalizado";
+        
         _jugadorAtacado = _jugadorAtacado == 1 ?  0 : _jugadorAtacado + 1;
-        
-        Estado = "Finalizado";
-        
         return respuesta;
         
         
