@@ -3,7 +3,7 @@
 public class Acorazados
 {
     private List<Jugador> _jugadores { get; } = [];
-    public string Estado { get; private set; } = "NoIniciado";
+    public EstadoJuego Estado { get; private set; } = EstadoJuego.NoIniciado;
     private int _jugadorAtacado = 1;
 
     public void AgregarJugador(string nombre)
@@ -22,7 +22,7 @@ public class Acorazados
         if (_jugadores.Count(a => a.Tablero.ExistenBarcos()) != _jugadores.Count)
             throw new InvalidOperationException("Ambos jugadores deben tener barcos en el tablero");
         
-        Estado = "Iniciado";
+        Estado = EstadoJuego.EnCurso;
     }
 
     public string Disparar(int i, int i1)
@@ -33,7 +33,7 @@ public class Acorazados
         
         
         if(!jugadorOponente.Tablero.ExistenBarcos())
-            Estado = "Finalizado";
+            Estado = EstadoJuego.Finalizado;
         
         _jugadorAtacado = _jugadorAtacado == 1 ?  0 : _jugadorAtacado + 1;
         return respuesta;
@@ -47,4 +47,11 @@ public class Jugador(string nombre)
 {
     public Tablero Tablero { get; set; } = new();
     public string Nombre { get; set; } = nombre;
+}
+
+public enum EstadoJuego
+{
+    NoIniciado,
+    EnCurso,
+    Finalizado
 }

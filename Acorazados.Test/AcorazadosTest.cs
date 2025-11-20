@@ -52,7 +52,7 @@ public class AcorazadosTest
     public void Si_InicializoElJuego_Debe_EstadoSerNoIniciado()
     {
         var acorazados = new  Acorazados();
-        acorazados.Estado.Should().Be("NoIniciado");
+        acorazados.Estado.Should().Be(EstadoJuego.NoIniciado);
     }
     
     [Fact]
@@ -70,7 +70,7 @@ public class AcorazadosTest
         
         acorazados.Start();
         
-        acorazados.Estado.Should().Be("Iniciado");
+        acorazados.Estado.Should().Be(EstadoJuego.EnCurso);
     }
     
     [Fact]
@@ -142,7 +142,7 @@ public class AcorazadosTest
         acorazados.Start();
         
         acorazados.Disparar(1, 1).Should().Be("Barco hundido");
-        acorazados.Estado.Should().Be("Finalizado");
+        acorazados.Estado.Should().Be(EstadoJuego.Finalizado);
     }
 
     
