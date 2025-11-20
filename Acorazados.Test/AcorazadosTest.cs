@@ -205,10 +205,10 @@ public class AcorazadosTest
     }
     
     [Fact]
-    public void Si_HayUnJuegoEnCursoEImprimoElTablero_Debe_MostrarTableroDelJugadorUno()
+    public void Si_ElJugadorUnoTieneUnCanoneroEnLaCoordenada1_1EImprimoElTablero_Debe_MostrarTableroActualDelJugadorUnoConUnCanoneroEnCoordenada1_1()
     {
         var tableroEsperado = 
-            "  Jugador: David                           \n" +
+            "  Jugador: David\n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
             "0 |   |   |   |   |   |   |   |   |   |   |\n" +
             "1 |   | g |   |   |   |   |   |   |   |   |\n" +
@@ -231,19 +231,15 @@ public class AcorazadosTest
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
         acorazados.Iniciar();
-        
-        var tablero = acorazados.Imprimir();
     
-        tablero.Should().Be(tableroEsperado);
-
-
+        acorazados.Imprimir().Should().Be(tableroEsperado);
     }
     
     [Fact]
-    public void Si_HayUnJuegoEnCursoDisparaUnaVezEImprimoElTablero_Debe_MostrarTableroDelJugadorDos()
+    public void Si_JugadorDosTieneUnCanonerEnLaCoordenada1_1YJugadorUnoDisparaACoordenada2_2_Debe_MostrarTableroActualDelJugadorDosConUnCanoneroYUnTiroFallido()
     {
         var tableroEsperado = 
-            "  Jugador: Diego                           \n" +
+            "  Jugador: Diego\n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
             "0 |   |   |   |   |   |   |   |   |   |   |\n" +
             "1 |   | g |   |   |   |   |   |   |   |   |\n" +
@@ -266,17 +262,15 @@ public class AcorazadosTest
             }).Construir();
         acorazados.Iniciar();
         acorazados.Disparar(2, 2);
-
-        var tablero = acorazados.Imprimir();
     
-        tablero.Should().Be(tableroEsperado);
+        acorazados.Imprimir().Should().Be(tableroEsperado);
     }
     
     [Fact]
-    public void Si_HayUnJuegoEnCursoDisparoDosVecesSinTiroExitosoEImprimoElTablero_Debe_MostrarTableroDelJugadorUno()
+    public void Si_JugadorUnoTieneUnCanoneroEnLaCoordenada1_1YJugadorDosDisparaACoordenada3_2_Debe_MostrarTableroActualDelJugadorUnoConUnCanoneroYUnTiroFallido()
     {
         var tableroEsperado = 
-            "  Jugador: David                           \n" +
+            "  Jugador: David\n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
             "0 |   |   |   |   |   |   |   |   |   |   |\n" +
             "1 |   | g |   |   |   |   |   |   |   |   |\n" +
@@ -299,21 +293,19 @@ public class AcorazadosTest
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
         acorazados.Iniciar();
-
         acorazados.Disparar(2, 2);
+        
         acorazados.Disparar(3, 2);
 
-        var tablero = acorazados.Imprimir();
-    
-        tablero.Should().Be(tableroEsperado);
+        acorazados.Imprimir().Should().Be(tableroEsperado);
 
     }
     
     [Fact]
-    public void Si_HayUnJuegoEnCursoDisparaUnaVezConTiroExitosoEImprimoElTablero_Debe_MostrarTableroDelJugadorDos()
+    public void Si_JugadorDosTieneUnDestructorEnLaCoordenada1_1EnPosicionHorizontalYJugadorUnoDisparaACoordenada1_1_Debe_MostrarTableroActualDelJugadorDosConUnDestructorYTiroExitoso()
     {
         var tableroEsperado = 
-            "  Jugador: Diego                           \n" +
+            "  Jugador: Diego\n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
             "0 |   |   |   |   |   |   |   |   |   |   |\n" +
             "1 |   | x | d | d |   |   |   |   |   |   |\n" +
@@ -336,10 +328,8 @@ public class AcorazadosTest
             }).Construir();
         acorazados.Iniciar();
         acorazados.Disparar(1, 1);
-
-        var tablero = acorazados.Imprimir();
     
-        tablero.Should().Be(tableroEsperado);
+        acorazados.Imprimir().Should().Be(tableroEsperado);
     }
     
     

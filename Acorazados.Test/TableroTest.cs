@@ -151,6 +151,7 @@ public class TableroTest
         tablero.ConsultarValorPorCoordenada(8, 3).Should().Be("X");
         tablero.ConsultarValorPorCoordenada(8, 4).Should().Be("X");
     }
+    
 
     [Fact]
     public void Si_AgregoUnSegundoPortaaviones_Debe_ArrojarExcepcion ()

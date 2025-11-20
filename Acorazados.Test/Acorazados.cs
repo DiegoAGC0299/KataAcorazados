@@ -73,11 +73,13 @@ public class Acorazados
 
     public string Imprimir()
     {
+        var jugadorActual = ObtenerJugadorEnTurnoActual();
+        
         if (_indiceJugadorActual == 1)
         {
-            if (ObtenerJugador(_indiceJugadorActual).Tablero.ConsultarValorPorCoordenada(1, 1) == "x")
+            if (jugadorActual.Tablero.ConsultarValorPorCoordenada(1, 1) == "x")
             {
-                return "  Jugador: Diego                           \n" +
+               return $"  Jugador: {jugadorActual.Nombre}\n" +
                        "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
                        "0 |   |   |   |   |   |   |   |   |   |   |\n" +
                        "1 |   | x | d | d |   |   |   |   |   |   |\n" +
@@ -90,7 +92,7 @@ public class Acorazados
                        "8 |   |   |   |   |   |   |   |   |   |   |\n" +
                        "9 |   |   |   |   |   |   |   |   |   |   |";
             }
-            return "  Jugador: Diego                           \n" +
+            return $"  Jugador: {jugadorActual.Nombre}\n" +
                    "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
                    "0 |   |   |   |   |   |   |   |   |   |   |\n" +
                    "1 |   | g |   |   |   |   |   |   |   |   |\n" +
@@ -105,8 +107,8 @@ public class Acorazados
         }
             
         
-        if(_indiceJugadorActual == 0 && ObtenerJugador(_indiceJugadorActual).Tablero.ConsultarValorPorCoordenada(3,2) == "o")
-            return "  Jugador: David                           \n" +
+        if(_indiceJugadorActual == 0 && jugadorActual.Tablero.ConsultarValorPorCoordenada(3,2) == "o")
+            return $"  Jugador: {jugadorActual.Nombre}\n" +
                    "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
                    "0 |   |   |   |   |   |   |   |   |   |   |\n" +
                    "1 |   | g |   |   |   |   |   |   |   |   |\n" +
@@ -119,7 +121,7 @@ public class Acorazados
                    "8 |   |   |   |   |   |   |   |   |   |   |\n" +
                    "9 |   |   |   |   |   |   |   |   |   |   |";
         
-        return "  Jugador: David                           \n" +
+        return $"  Jugador: {jugadorActual.Nombre}\n" +
                "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
                "0 |   |   |   |   |   |   |   |   |   |   |\n" +
                "1 |   | g |   |   |   |   |   |   |   |   |\n" +
@@ -131,5 +133,10 @@ public class Acorazados
                "7 |   |   |   |   |   |   |   |   |   |   |\n" +
                "8 |   |   |   |   |   |   |   |   |   |   |\n" +
                "9 |   |   |   |   |   |   |   |   |   |   |";
+    }
+
+    private Jugador ObtenerJugadorEnTurnoActual()
+    {
+        return ObtenerJugador(_indiceJugadorActual);
     }
 }
