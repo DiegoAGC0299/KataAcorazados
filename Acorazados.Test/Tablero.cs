@@ -175,5 +175,9 @@ public class Tablero
 
     public int ObtenerDisparosTotales()
         => Cuadro.Cast<string>()
-            .Count(x => !string.IsNullOrEmpty(x));
+            .Count(x => !string.IsNullOrEmpty(x) && (x == MarcaTiroAlAgua || x == MarcaTiroExitoso || x == MarcaBarcoHundido));
+    
+    public int ObtenerDisparosFallidos()
+        => Cuadro.Cast<string>()
+            .Count(x => !string.IsNullOrEmpty(x) && x == MarcaTiroAlAgua);
 }
