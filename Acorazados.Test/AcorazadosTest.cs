@@ -79,11 +79,11 @@ public class AcorazadosTest
         var acorazados = _acorazadosBuilder
             .ConstruirJugadorUno("David", tablero =>
             {
-                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+                tablero.AgregarBarco(Barcos.Destructor, 1,2);
             } )
             .ConstruirJugadorDos("Diego", tablero =>
             {
-                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+                tablero.AgregarBarco(Barcos.Destructor, 1,1);
             }).Construir();
         acorazados.Start();
 
@@ -114,11 +114,11 @@ public class AcorazadosTest
         var acorazados = _acorazadosBuilder
             .ConstruirJugadorUno("David", tablero =>
             {
-                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+                tablero.AgregarBarco(Barcos.Destructor, 1,2);
             } )
             .ConstruirJugadorDos("Diego", tablero =>
             {
-                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+                tablero.AgregarBarco(Barcos.Destructor, 1,1);
             }).Construir();
         acorazados.Start();
 

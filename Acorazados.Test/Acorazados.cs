@@ -4,6 +4,7 @@ public class Acorazados
 {
     private List<Jugador> _jugadores { get; } = [];
     public string Estado { get; private set; } = "NoIniciado";
+    private int _jugadorAtacado = 1;
 
     public void AgregarJugador(string nombre)
     {
@@ -26,8 +27,14 @@ public class Acorazados
 
     public string Disparar(int i, int i1)
     {
-        var jugador =  ObtenerJugador(1);
-        return jugador.Tablero.RecibirDisparo(i, i1);
+        var jugadorEnTurno = ObtenerJugador(_jugadorAtacado);
+        var respuesta = jugadorEnTurno.Tablero.RecibirDisparo(i, i1);
+        _jugadorAtacado = _jugadorAtacado == 1 ?  0 : _jugadorAtacado + 1;
+        
+        return respuesta;
+        
+        
+        
     }
 }
 
