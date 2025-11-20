@@ -252,6 +252,8 @@ public class AcorazadosTest
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
         acorazados.Iniciar();
+
+        acorazados.Disparar(2, 2);
     
         var tableroEsperado = 
             "  Jugador: Diego                           \n" +
