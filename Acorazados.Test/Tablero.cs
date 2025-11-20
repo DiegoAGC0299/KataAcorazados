@@ -180,4 +180,8 @@ public class Tablero
     public int ObtenerDisparosFallidos()
         => Cuadro.Cast<string>()
             .Count(x => !string.IsNullOrEmpty(x) && x == MarcaTiroAlAgua);
+    
+    public int ObtenerDisparosExitosos()
+        => Cuadro.Cast<string>()
+            .Count(x => !string.IsNullOrEmpty(x) && x == MarcaTiroExitoso || x == MarcaBarcoHundido);
 }

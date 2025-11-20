@@ -23,8 +23,8 @@
 - [x] Si jugador 1 dispara dos veces al jugador 2, finaliza el juego y se imprime el reporte del jugador 2, el total de disparos debe ser 2.
 - [x] Si el jugador 1 dispara dos veces al jugador 2, uno de ellos es fallido y finalizo el juego, el total de tiros fallidos es 1 y el total de disparos debe ser 2.
 - [x] Si el jugador 1 dispara dos veces al jugador 2, ambos son fallidos y finalizo el juego, el total de tiros fallidos es 2 y el total de disparos debe ser 2.
-- [] Si el jugador 1 dispara dos veces al jugador 2, uno de ellos es exitoso y finalizo el juego, el total de tiros exitosos es 1 y el total de disparos debe ser 2. 
-- [] Si el jugador 1 dispara dos veces al jugador 2, ambos son exitosos y finalizo el juego, el total de tiros exitosos es 2 y el total de disparos debe ser 2. 
+- [x] Si el jugador 1 dispara dos veces al jugador 2, uno de ellos es exitoso y finalizo el juego, el total de tiros exitosos es 1 y el total de disparos debe ser 2. 
+- [x] Si el jugador 1 dispara dos veces al jugador 2, ambos son exitosos y finalizo el juego, el total de tiros exitosos es 2 y el total de disparos debe ser 2. 
 
 Por donde iniciamos
 como quedo la implementacion
