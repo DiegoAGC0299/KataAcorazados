@@ -185,5 +185,27 @@ public class AcorazadosTest
     }
 
     
+    [Fact]
+    public void Si_CualquierjugadorDisparaaCoordenadasFueraDelRangoDelTablero_Debe_LanzarExcepcion()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Start();
+        acorazados.Disparar(1, 1);
+        
+        Action resultado = () => acorazados.Disparar(11, 11);
+        
+        resultado.Should().ThrowExactly<InvalidOperationException>("Excede el limite del tablero");
+    }
+
+
+    
     
 }
