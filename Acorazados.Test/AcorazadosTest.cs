@@ -207,17 +207,6 @@ public class AcorazadosTest
     [Fact]
     public void Si_HayUnJuegoEnCursoEImprimoElTablero_Debe_MostrarTableroDelJugadorUno()
     {
-        var acorazados = _acorazadosBuilder
-            .ConstruirJugadorUno("David", tablero =>
-            {
-                tablero.AgregarBarco(Barcos.Canonero, 1,1);
-            } )
-            .ConstruirJugadorDos("Diego", tablero =>
-            {
-                tablero.AgregarBarco(Barcos.Canonero, 1,1);
-            }).Construir();
-        acorazados.Iniciar();
-    
         var tableroEsperado = 
             "  Jugador: David                           \n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
@@ -232,6 +221,17 @@ public class AcorazadosTest
             "8 |   |   |   |   |   |   |   |   |   |   |\n" +
             "9 |   |   |   |   |   |   |   |   |   |   |";
 
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Iniciar();
+        
         var tablero = acorazados.Imprimir();
     
         tablero.Should().Be(tableroEsperado);
@@ -242,19 +242,6 @@ public class AcorazadosTest
     [Fact]
     public void Si_HayUnJuegoEnCursoDisparaUnaVezEImprimoElTablero_Debe_MostrarTableroDelJugadorDos()
     {
-        var acorazados = _acorazadosBuilder
-            .ConstruirJugadorUno("David", tablero =>
-            {
-                tablero.AgregarBarco(Barcos.Canonero, 1,2);
-            } )
-            .ConstruirJugadorDos("Diego", tablero =>
-            {
-                tablero.AgregarBarco(Barcos.Canonero, 1,1);
-            }).Construir();
-        acorazados.Iniciar();
-
-        acorazados.Disparar(2, 2);
-    
         var tableroEsperado = 
             "  Jugador: Diego                           \n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
@@ -268,17 +255,6 @@ public class AcorazadosTest
             "7 |   |   |   |   |   |   |   |   |   |   |\n" +
             "8 |   |   |   |   |   |   |   |   |   |   |\n" +
             "9 |   |   |   |   |   |   |   |   |   |   |";
-
-        var tablero = acorazados.Imprimir();
-    
-        tablero.Should().Be(tableroEsperado);
-
-
-    }
-    
-    [Fact]
-    public void Si_HayUnJuegoEnCursoDisparoDosVecesSinTiroExitosoEImprimoElTablero_Debe_MostrarTableroDelJugadorUno()
-    {
         var acorazados = _acorazadosBuilder
             .ConstruirJugadorUno("David", tablero =>
             {
@@ -289,10 +265,16 @@ public class AcorazadosTest
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
             }).Construir();
         acorazados.Iniciar();
-
         acorazados.Disparar(2, 2);
-        acorazados.Disparar(3, 2);
+
+        var tablero = acorazados.Imprimir();
     
+        tablero.Should().Be(tableroEsperado);
+    }
+    
+    [Fact]
+    public void Si_HayUnJuegoEnCursoDisparoDosVecesSinTiroExitosoEImprimoElTablero_Debe_MostrarTableroDelJugadorUno()
+    {
         var tableroEsperado = 
             "  Jugador: David                           \n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
@@ -306,11 +288,24 @@ public class AcorazadosTest
             "7 |   |   |   |   |   |   |   |   |   |   |\n" +
             "8 |   |   |   |   |   |   |   |   |   |   |\n" +
             "9 |   |   |   |   |   |   |   |   |   |   |";
+        
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Iniciar();
+
+        acorazados.Disparar(2, 2);
+        acorazados.Disparar(3, 2);
 
         var tablero = acorazados.Imprimir();
     
         tablero.Should().Be(tableroEsperado);
-
 
     }
 
