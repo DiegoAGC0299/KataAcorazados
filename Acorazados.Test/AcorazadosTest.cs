@@ -506,6 +506,32 @@ public class AcorazadosTest
 
     }
     
+    [Fact]
+    public void Si_Jugador1DisparaDosVecesYAmbosTirosSonExitososYElJuegoSeHaFinalizadoYSeImprimeReporteJugadorDos_Debe_TotalDeDisparosSer2YTotalDeTirosExitososSer2()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+            }).Construir();
+        acorazados.Iniciar();
+        acorazados.Disparar(1, 2);
+        acorazados.Disparar(1, 2);
+        acorazados.Disparar(1, 1);
+        var jugador2 = acorazados.ObtenerJugador(1);
+        
+        var reporteGenerado = acorazados.ImprimirReporte(jugador2);
+        
+        reporteGenerado.Should().Contain("Disparos totales: 2");
+        reporteGenerado.Should().Contain("Exitosos: 2");
+
+    }
+    
     
     
 }
