@@ -54,6 +54,22 @@ public class AcorazadosTest
         acorazados.Estado.Should().Be("NoIniciado");
     }
     
+    [Fact]
+    public void Si_ComienzoElJuegoConJugadoresYBarcos_Debe_EstadoSerIniciado()
+    {
+        var acorazados = new  Acorazados();
+        acorazados.AgregarJugador("David");
+        acorazados.AgregarJugador("Diego");
+        var jugadorUno = acorazados.ObtenerJugador(0);
+        jugadorUno.Tablero.AgregarBarco(Barcos.Canonero, 1,1);
+        var jugadorDos = acorazados.ObtenerJugador(1);
+        jugadorDos.Tablero.AgregarBarco(Barcos.Canonero, 1,1);
+        
+        acorazados.Start();
+        
+        acorazados.Estado.Should().Be("Iniciado");
+    }
+    
     
     
 }

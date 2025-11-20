@@ -3,7 +3,7 @@
 public class Acorazados
 {
     private List<Jugador> _jugadores { get; } = [];
-    public string Estado { get; } = "NoIniciado";
+    public string Estado { get; private set; } = "NoIniciado";
 
     public void AgregarJugador(string nombre)
     {
@@ -20,6 +20,8 @@ public class Acorazados
     {
         if (_jugadores.Count(a => a.Tablero.ExistenBarcos()) != _jugadores.Count)
             throw new InvalidOperationException("Ambos jugadores deben tener barcos en el tablero");
+        
+        Estado = "Iniciado";
     }
 }
 
