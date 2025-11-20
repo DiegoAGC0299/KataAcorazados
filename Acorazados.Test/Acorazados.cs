@@ -3,7 +3,7 @@
 public class Acorazados
 {
     private List<Jugador> _jugadores { get; } = [];
-    public object Estado { get; set; }
+    public string Estado { get; set; } = "NoIniciado";
 
     public void AgregarJugador(string nombre)
     {

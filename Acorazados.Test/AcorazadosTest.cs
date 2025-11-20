@@ -51,8 +51,9 @@ public class AcorazadosTest
     public void Si_InicializoElJuego_Debe_EstadoSerNoIniciado()
     {
         var acorazados = new  Acorazados();
-
         acorazados.Estado.Should().Be("NoIniciado");
     }
+    
+    
     
 }
