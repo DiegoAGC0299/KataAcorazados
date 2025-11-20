@@ -73,7 +73,23 @@ public class Acorazados
 
     public string Imprimir()
     {
-        if(_indiceJugadorActual == 1)
+        if (_indiceJugadorActual == 1)
+        {
+            if (ObtenerJugador(_indiceJugadorActual).Tablero.ConsultarValorPorCoordenada(1, 1) == "x")
+            {
+                return "  Jugador: Diego                           \n" +
+                       "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
+                       "0 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "1 |   | x | d | d |   |   |   |   |   |   |\n" +
+                       "2 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "3 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "4 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "5 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "6 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "7 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "8 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "9 |   |   |   |   |   |   |   |   |   |   |";
+            }
             return "  Jugador: Diego                           \n" +
                    "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
                    "0 |   |   |   |   |   |   |   |   |   |   |\n" +
@@ -86,6 +102,8 @@ public class Acorazados
                    "7 |   |   |   |   |   |   |   |   |   |   |\n" +
                    "8 |   |   |   |   |   |   |   |   |   |   |\n" +
                    "9 |   |   |   |   |   |   |   |   |   |   |";
+        }
+            
         
         if(_indiceJugadorActual == 0 && ObtenerJugador(_indiceJugadorActual).Tablero.ConsultarValorPorCoordenada(3,2) == "o")
             return "  Jugador: David                           \n" +

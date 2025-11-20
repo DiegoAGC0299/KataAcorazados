@@ -335,7 +335,7 @@ public class AcorazadosTest
                 tablero.AgregarBarco(Barcos.Destructor, 1,1);
             }).Construir();
         acorazados.Iniciar();
-        acorazados.Disparar(1, 2);
+        acorazados.Disparar(1, 1);
 
         var tablero = acorazados.Imprimir();
     
