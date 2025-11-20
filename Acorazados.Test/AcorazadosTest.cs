@@ -91,5 +91,23 @@ public class AcorazadosTest
     }
     
     
+    [Fact]
+    public void Si_JugadorUnoDisparaAlJugadorDosConCoordenada5_5_Debe_MostrarAgua()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Start();
+
+        acorazados.Disparar(1, 1).Should().Be("Agua");
+    }
+
+    
     
 }
