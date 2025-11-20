@@ -210,7 +210,7 @@ public class AcorazadosTest
         var acorazados = _acorazadosBuilder
             .ConstruirJugadorUno("David", tablero =>
             {
-                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
             } )
             .ConstruirJugadorDos("Diego", tablero =>
             {
@@ -220,6 +220,41 @@ public class AcorazadosTest
     
         var tableroEsperado = 
             "  Jugador: David                           \n" +
+            "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
+            "0 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "1 |   | g |   |   |   |   |   |   |   |   |\n" +
+            "2 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "3 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "4 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "5 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "6 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "7 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "8 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "9 |   |   |   |   |   |   |   |   |   |   |";
+
+        var tablero = acorazados.Imprimir();
+    
+        tablero.Should().Be(tableroEsperado);
+
+
+    }
+    
+    [Fact]
+    public void Si_HayUnJuegoEnCursoDisparaUnaVezEImprimoElTablero_Debe_MostrarTableroDelJugadorDos()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Iniciar();
+    
+        var tableroEsperado = 
+            "  Jugador: Diego                           \n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
             "0 |   |   |   |   |   |   |   |   |   |   |\n" +
             "1 |   | g |   |   |   |   |   |   |   |   |\n" +
