@@ -308,6 +308,41 @@ public class AcorazadosTest
         tablero.Should().Be(tableroEsperado);
 
     }
+    
+    [Fact]
+    public void Si_HayUnJuegoEnCursoDisparaUnaVezConTiroExitosoEImprimoElTablero_Debe_MostrarTableroDelJugadorDos()
+    {
+        var tableroEsperado = 
+            "  Jugador: Diego                           \n" +
+            "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
+            "0 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "1 |   | x | d | d |   |   |   |   |   |   |\n" +
+            "2 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "3 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "4 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "5 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "6 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "7 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "8 |   |   |   |   |   |   |   |   |   |   |\n" +
+            "9 |   |   |   |   |   |   |   |   |   |   |";
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,2, Orientacion.Horizontal);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Destructor, 1,1);
+            }).Construir();
+        acorazados.Iniciar();
+        acorazados.Disparar(1, 2);
+
+        var tablero = acorazados.Imprimir();
+    
+        tablero.Should().Be(tableroEsperado);
+    }
+    
+    
 
 
 
