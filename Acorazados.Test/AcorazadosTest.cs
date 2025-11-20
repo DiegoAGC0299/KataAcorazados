@@ -362,4 +362,23 @@ public class AcorazadosTest
     
         acorazados.Imprimir().Should().Be(tableroEsperado);
     }
+
+    [Fact]
+    public void Si_ImprimoElInformeDeLaPartidaYElJuegoNoHaSidoFinalizado_Debe_LanzarExcepcion()
+    {
+        var acorazados = _acorazadosBuilder
+            .ConstruirJugadorUno("David", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            } )
+            .ConstruirJugadorDos("Diego", tablero =>
+            {
+                tablero.AgregarBarco(Barcos.Canonero, 1,1);
+            }).Construir();
+        acorazados.Iniciar();
+
+        Action resultado = () => acorazados.ImprimirReporte();
+        
+        resultado.Should().ThrowExactly<InvalidOperationException>("El juego no se ha finalizado");
+    }
 }

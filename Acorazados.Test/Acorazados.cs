@@ -94,4 +94,9 @@ public class Acorazados
     private static void AgregarDibujoTablero(Jugador jugadorActual, StringBuilder tableroJugador) => tableroJugador.Append(jugadorActual.Tablero.DibujarTablero());
 
     private Jugador ObtenerJugadorEnTurnoActual() => ObtenerJugador(_indiceJugadorActual);
+
+    public string ImprimirReporte()
+    {
+        throw new NotImplementedException();
+    }
 }

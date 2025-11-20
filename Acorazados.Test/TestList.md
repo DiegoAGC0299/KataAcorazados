@@ -15,5 +15,8 @@
 
 #Jugadores
 - [x] Si agrego un jugador, debe existir un jugador con un tablero
-- [ ] Si agrego más de dos jugadores, debe lanzar excepción
-- 
+- [x] Si agrego más de dos jugadores, debe lanzar excepción
+
+#Informe del tablero
+- [] Si imprimo el informe de la partida y el juego no ha sido finalizado, debe lanzar excepción.
+- [] Si finaliza la partida y el jugador 1 le hicieron dos disparos, debe en el informe, el total de disparos del jugador 1 ser 2.
