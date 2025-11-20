@@ -23,6 +23,11 @@ public class Acorazados
         
         Estado = "Iniciado";
     }
+
+    public string Disparar(int i, int i1)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class Jugador(string nombre)
