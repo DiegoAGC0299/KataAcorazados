@@ -333,14 +333,14 @@ public class AcorazadosTest
     }
     
     [Fact]
-    public void Si_JugadorDosTieneDosCanonerosEnLaCoordenadas1_1Y2_2YJugadorUnoHundeBarcoConCoordenada1_1_Debe_MostrarTableroActualDelJugadorDosConCanoneroHundidoEnCoordenada1_1YExistenteEnCoordenada1_2()
+    public void Si_JugadorDosTieneDosCanonerosEnLaCoordenadas1_1Y2_2YJugadorUnoHundeBarcoConCoordenada1_1_Debe_MostrarTableroActualDelJugadorDosConCanoneroHundidoEnCoordenada1_1YExistenteEnCoordenada2_2()
     {
         var tableroEsperado = 
             "  Jugador: Diego\n" +
             "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
             "0 |   |   |   |   |   |   |   |   |   |   |\n" +
             "1 |   | X |   |   |   |   |   |   |   |   |\n" +
-            "2 |   | g |   |   |   |   |   |   |   |   |\n" +
+            "2 |   |   | g |   |   |   |   |   |   |   |\n" +
             "3 |   |   |   |   |   |   |   |   |   |   |\n" +
             "4 |   |   |   |   |   |   |   |   |   |   |\n" +
             "5 |   |   |   |   |   |   |   |   |   |   |\n" +
@@ -356,7 +356,7 @@ public class AcorazadosTest
             .ConstruirJugadorDos("Diego", tablero =>
             {
                 tablero.AgregarBarco(Barcos.Canonero, 1,1);
-                tablero.AgregarBarco(Barcos.Canonero, 1,2);
+                tablero.AgregarBarco(Barcos.Canonero, 2,2);
             }).Construir();
         acorazados.Iniciar();
         acorazados.Disparar(1, 1);

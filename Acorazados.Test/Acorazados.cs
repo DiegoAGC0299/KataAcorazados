@@ -92,6 +92,21 @@ public class Acorazados
                        "8 |   |   |   |   |   |   |   |   |   |   |\n" +
                        "9 |   |   |   |   |   |   |   |   |   |   |";
             }
+            
+            if(jugadorActual.Tablero.ConsultarValorPorCoordenada(2,2) == "g")
+                return $"  Jugador: {jugadorActual.Nombre}\n" +
+                       "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
+                       "0 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "1 |   | X |   |   |   |   |   |   |   |   |\n" +
+                       "2 |   |   | g |   |   |   |   |   |   |   |\n" +
+                       "3 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "4 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "5 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "6 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "7 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "8 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "9 |   |   |   |   |   |   |   |   |   |   |";
+            
             return $"  Jugador: {jugadorActual.Nombre}\n" +
                    "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
                    "0 |   |   |   |   |   |   |   |   |   |   |\n" +
@@ -107,19 +122,22 @@ public class Acorazados
         }
             
         
-        if(_indiceJugadorActual == 0 && jugadorActual.Tablero.ConsultarValorPorCoordenada(3,2) == "o")
-            return $"  Jugador: {jugadorActual.Nombre}\n" +
-                   "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
-                   "0 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "1 |   | g |   |   |   |   |   |   |   |   |\n" +
-                   "2 |   |   |   | o |   |   |   |   |   |   |\n" +
-                   "3 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "4 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "5 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "6 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "7 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "8 |   |   |   |   |   |   |   |   |   |   |\n" +
-                   "9 |   |   |   |   |   |   |   |   |   |   |";
+        if(_indiceJugadorActual == 0)
+        {
+            if(jugadorActual.Tablero.ConsultarValorPorCoordenada(3,2) == "o")
+                return $"  Jugador: {jugadorActual.Nombre}\n" +
+                       "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
+                       "0 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "1 |   | g |   |   |   |   |   |   |   |   |\n" +
+                       "2 |   |   |   | o |   |   |   |   |   |   |\n" +
+                       "3 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "4 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "5 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "6 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "7 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "8 |   |   |   |   |   |   |   |   |   |   |\n" +
+                       "9 |   |   |   |   |   |   |   |   |   |   |";
+        }
         
         return $"  Jugador: {jugadorActual.Nombre}\n" +
                "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
