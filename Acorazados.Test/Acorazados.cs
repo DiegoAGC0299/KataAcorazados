@@ -97,9 +97,13 @@ public class Acorazados
 
     public string ImprimirReporte()
     {
+        LanzarExcepcionSiJuegoNoHaSidoFinalizado();
+        return string.Empty;
+    }
+
+    private void LanzarExcepcionSiJuegoNoHaSidoFinalizado()
+    {
         if (EstadoJuego != EstadoJuego.Finalizado)
             throw new InvalidOperationException("El juego no se ha finalizado");
-
-        return string.Empty;
     }
 }
