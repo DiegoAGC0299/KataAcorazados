@@ -106,7 +106,7 @@ public class Tablero
 
     private void LanzarExcepcionSiCasillaEstaFueraDeLimiteDelTablero(int x, int y)
     {
-        if (x > _indiceXMaximo || y > _indiceYMaximo)
+        if (x > _indiceXMaximo || y > _indiceYMaximo || x < 0 || y < 0)
             throw new InvalidOperationException("Excede el limite del tablero");
     }
 
