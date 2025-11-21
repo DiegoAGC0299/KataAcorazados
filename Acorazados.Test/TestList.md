@@ -25,6 +25,7 @@
 - [x] Si el jugador 1 dispara dos veces al jugador 2, ambos son fallidos y finalizo el juego, el total de tiros fallidos es 2 y el total de disparos debe ser 2.
 - [x] Si el jugador 1 dispara dos veces al jugador 2, uno de ellos es exitoso y finalizo el juego, el total de tiros exitosos es 1 y el total de disparos debe ser 2. 
 - [x] Si el jugador 1 dispara dos veces al jugador 2, ambos son exitosos y finalizo el juego, el total de tiros exitosos es 2 y el total de disparos debe ser 2. 
+- [x] Si el jugador 1 dispara al cañonero del jugador 2 con coordenada 1,1 y se finaliza el juego y se imprime el reporte del jugador 2, debe mostrar ese barco en la lista de barcos hundidos. 
 
 Por donde iniciamos
 como quedo la implementacion
