@@ -95,7 +95,7 @@ public class Acorazados
 
     private Jugador ObtenerJugadorEnTurnoActual() => ObtenerJugador(_indiceJugadorActual);
 
-    public string ImprimirReporte(Jugador jugadorSeleccionado)
+    public string ImprimirReportePorJugador(Jugador jugadorSeleccionado)
     {
         LanzarExcepcionSiJuegoNoHaSidoFinalizado();
         return $"Disparos totales: {jugadorSeleccionado.Tablero.ObtenerDisparosTotales()} " +

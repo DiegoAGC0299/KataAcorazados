@@ -377,7 +377,7 @@ public class AcorazadosTest
             }).Construir();
         acorazados.Iniciar();
 
-        Action resultado = () => acorazados.ImprimirReporte(acorazados.ObtenerJugador(0));
+        Action resultado = () => acorazados.ImprimirReportePorJugador(acorazados.ObtenerJugador(0));
         
         resultado.Should().ThrowExactly<InvalidOperationException>().WithMessage("El juego no se ha finalizado");
     }
@@ -399,7 +399,7 @@ public class AcorazadosTest
         acorazados.Disparar(1, 1);
         var jugador2 = acorazados.ObtenerJugador(1);
         
-        var reporteGenerado = acorazados.ImprimirReporte(jugador2);
+        var reporteGenerado = acorazados.ImprimirReportePorJugador(jugador2);
         reporteGenerado.Should().Contain("Disparos totales: 1");
 
     }
@@ -425,7 +425,7 @@ public class AcorazadosTest
         
         var jugador2 = acorazados.ObtenerJugador(1);
         
-        var reporteGenerado = acorazados.ImprimirReporte(jugador2);
+        var reporteGenerado = acorazados.ImprimirReportePorJugador(jugador2);
         reporteGenerado.Should().Contain("Disparos totales: 2");
 
     }
@@ -448,7 +448,7 @@ public class AcorazadosTest
         acorazados.Disparar(1, 1);
         var jugador2 = acorazados.ObtenerJugador(1);
         
-        var reporteGenerado = acorazados.ImprimirReporte(jugador2);
+        var reporteGenerado = acorazados.ImprimirReportePorJugador(jugador2);
         
         reporteGenerado.Should().Contain("Disparos totales: 2");
         reporteGenerado.Should().Contain("Fallidos: 1");
@@ -474,7 +474,7 @@ public class AcorazadosTest
         acorazados.Disparar(1, 1);
         var jugador2 = acorazados.ObtenerJugador(1);
         
-        var reporteGenerado = acorazados.ImprimirReporte(jugador2);
+        var reporteGenerado = acorazados.ImprimirReportePorJugador(jugador2);
         
         reporteGenerado.Should().Contain("Disparos totales: 2");
         reporteGenerado.Should().Contain("Fallidos: 2");
@@ -499,7 +499,7 @@ public class AcorazadosTest
         acorazados.Disparar(1, 1);
         var jugador2 = acorazados.ObtenerJugador(1);
         
-        var reporteGenerado = acorazados.ImprimirReporte(jugador2);
+        var reporteGenerado = acorazados.ImprimirReportePorJugador(jugador2);
         
         reporteGenerado.Should().Contain("Disparos totales: 2");
         reporteGenerado.Should().Contain("Exitosos: 1");
@@ -525,7 +525,7 @@ public class AcorazadosTest
         acorazados.Disparar(1, 1);
         var jugador2 = acorazados.ObtenerJugador(1);
         
-        var reporteGenerado = acorazados.ImprimirReporte(jugador2);
+        var reporteGenerado = acorazados.ImprimirReportePorJugador(jugador2);
         
         reporteGenerado.Should().Contain("Disparos totales: 2");
         reporteGenerado.Should().Contain("Exitosos: 2");
